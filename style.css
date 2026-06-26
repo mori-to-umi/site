@@ -1,0 +1,43 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* スマホ */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 10px;
+  }
+
+  nav.show {
+    display: flex;
+  }
+}
