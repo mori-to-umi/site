@@ -491,63 +491,70 @@ footer {
     height: 160px;
   }
 }
-
 /* ==========================================
-   【上下の白と馴染む、透明感メッシュグラデーション】
+   【完全調和版】ヘッダー透明化 ＆ 境界線なしメッシュグラデーション
    ========================================== */
 
+/* 1. 【全員共通】ヘッダーの白い帯を消して、完全に透明化します */
+header {
+  background-color: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important; /* 下の影も消して、背景と完全に一体化 */
+}
+
+/* ロゴとメニューボタンの色は、ブランドカラーの深緑のまま優しく佇ませます */
+header .logo, 
+header .menu-btn {
+  color: var(--color-main) !important;
+}
+
+/* 2. 📱 スマホ（画面幅768px以下）の配置と色の決定版 */
 @media (max-width: 768px) {
-  
   .hero {
+    /* 高さは「180px」のコンパクトさをキープ */
     min-height: 180px !important;
     height: 180px !important;
-    padding-top: 85px !important;
-    padding-bottom: 20px !important;
     
-    /* ⭕ ベースを真っ白ではなく、ごく淡いペールグリーンにして上下の白と差別化 */
-    background-color: #eef5f1 !important; 
+    /* ⭕ ヘッダーを透明にしたので、文字が上に被らないよう上の余白を少し調整 */
+    padding-top: 95px !important;
+    padding-bottom: 25px !important;
+    
+    /* ⭕ 中央の「白」を廃止。全体に淡く優しいニュアンスカラーをブレンド */
+    background-color: #f7f9f7 !important; 
     background-image:
-      /* ⭕ 中央の光：真っ白を「ごく薄い輝くライトグリーン」に変えて、上下の白と境界線を作ります */
-      radial-gradient(at 50% 50%, rgba(240, 249, 244, 0.9) 0%, transparent 80%),
-      /* 四隅の色：少しだけ内側まで滲ませて、グレーの帯に見えるのを防ぎます */
-      radial-gradient(at 10% 10%, rgba(74, 124, 89, 0.35) 0px, transparent 70%),   /* 左上：森の深緑 */
-      radial-gradient(at 90% 10%, rgba(143, 192, 169, 0.3) 0px, transparent 70%),  /* 右上：明るい緑 */
-      radial-gradient(at 90% 90%, rgba(39, 76, 119, 0.35) 0px, transparent 70%),   /* 右下：海の青 */
-      radial-gradient(at 10% 90%, rgba(96, 150, 186, 0.3) 0px, transparent 70%) !important;  /* 左下：水の青 */
+      radial-gradient(at 0% 0%, rgba(120, 165, 133, 0.25) 0px, transparent 70%),   /* 🌲 左上：優しい杜の緑 */
+      radial-gradient(at 100% 0%, rgba(222, 198, 164, 0.2) 0px, transparent 70%),  /* 🏖️ 右上：ほんのり温かい砂浜ベージュ */
+      radial-gradient(at 100% 100%, rgba(123, 162, 192, 0.25) 0px, transparent 70%),/* 🌊 右下：澄んだ瀬戸内の青 */
+      radial-gradient(at 0% 100%, rgba(162, 202, 175, 0.15) 0px, transparent 70%) !important; /* 左下：柔らかな光の緑 */
   }
 
+  /* キーワード（文字）の配置とデザイン */
   .hero h1 {
     font-size: 19px !important;
     line-height: 1.6 !important;
     color: var(--color-main) !important;
-    /* 文字の読みやすさをキープするシャドウ */
-    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.6) !important;
+    letter-spacing: 0.08em !important;
+    /* ⭕ 背景が優しくなったので、強い影を無くし、ごく自然に馴染ませます */
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  /* 下の白いセクションとのつながり */
+  #service {
+    padding-top: 40px !important; 
   }
 }
 
-/* PC版も同様のバランスに調整 */
+/* 3. 【PC版】も同じく透明感のある美しい一体型に */
 @media (min-width: 769px) {
   .hero {
-    min-height: 35vh !important;
-    background-color: #eef5f1 !important;
+    min-height: 38vh !important;
+    padding-top: 120px !important;
+    background-color: #f7f9f7 !important;
     background-image:
-      radial-gradient(at 50% 50%, rgba(240, 249, 244, 0.8) 0%, transparent 80%),
-      radial-gradient(at 0% 0%, rgba(74, 124, 89, 0.25) 0px, transparent 60%),
-      radial-gradient(at 100% 0%, rgba(143, 192, 169, 0.2) 0px, transparent 60%),
-      radial-gradient(at 100% 100%, rgba(39, 76, 119, 0.25) 0px, transparent 60%),
-      radial-gradient(at 0% 100%, rgba(96, 150, 186, 0.2) 0px, transparent 60%) !important;
+      radial-gradient(at 0% 0%, rgba(120, 165, 133, 0.2) 0px, transparent 60%),
+      radial-gradient(at 100% 0%, rgba(222, 198, 164, 0.15) 0px, transparent 60%),
+      radial-gradient(at 100% 100%, rgba(123, 162, 192, 0.2) 0px, transparent 60%),
+      radial-gradient(at 0% 100%, rgba(162, 202, 175, 0.1) 0px, transparent 60%) !important;
   }
 }
-/* ===== パターンA：ヘッダーを深緑にして引き締める ===== */
-header {
-  background-color: var(--color-main) !important; /* ⭕ 白から「杜の深緑」に変更 */
-  box-shadow: 0 2px 15px rgba(26,60,64,0.15) !important;
-}
-
-/* ヘッダーの中の文字（ロゴと三本線メニュー）を白にして目立たせる */
-header .logo, 
-header .menu-btn {
-  color: #ffffff !important;
-}
-
-
