@@ -538,4 +538,16 @@ footer {
       radial-gradient(at 0% 100%, rgba(96, 150, 186, 0.2) 0px, transparent 60%) !important;
   }
 }
+/* ===== パターンA：ヘッダーを深緑にして引き締める ===== */
+header {
+  background-color: var(--color-main) !important; /* ⭕ 白から「杜の深緑」に変更 */
+  box-shadow: 0 2px 15px rgba(26,60,64,0.15) !important;
+}
+
+/* ヘッダーの中の文字（ロゴと三本線メニュー）を白にして目立たせる */
+header .logo, 
+header .menu-btn {
+  color: #ffffff !important;
+}
+
 
