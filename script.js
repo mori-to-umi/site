@@ -18,3 +18,8 @@ document.querySelectorAll("nav a").forEach(link => {
     overlay.classList.remove("show");
   });
 });
+
+/* スクロール位置リセット（スマホ引っ張り対策） */
+window.onload = () => {
+  window.scrollTo(0, 0);
+};
