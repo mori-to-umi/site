@@ -32,12 +32,12 @@ header {
 
 /* ☰ ハンバーガー */
 .menu-btn {
-  display: block;
+  display: block !important;
   font-size: 28px;
   cursor: pointer;
   color: #2f3b2f;
-  z-index: 4000;
-  user-select: none;
+  z-index: 9999;
+  position: relative;
 }
 
 /* ===== メニュー ===== */
