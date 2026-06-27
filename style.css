@@ -492,39 +492,48 @@ footer {
   }
 }
 
+
 /* ==========================================
-   最下部に貼り付けて、自分で数値を調整するブロック
-   ========================================== */
-/* ==========================================
-   【2色グラデーション版】最下部のブロックをこれに書き換えてください
+   【多色ブレンド版】奥行きのあるメッシュグラデーション
    ========================================== */
 
 @media (max-width: 768px) {
   
-  /* 1. グラデーションエリア（砂浜を消して、緑と青の2色に） */
   .hero {
-    min-height: 190px !important;
-    height: 190px !important;
-    padding-top: 80px !important;
+    /* 👇 【高さ】少し余裕を持たせて「180px」に設定。ここを増減して高さを調整してください */
+    min-height: 180px !important;
+    height: 180px !important;
+    padding-top: 85px !important;
     padding-bottom: 20px !important;
     
-    /* ⭕ 3行だった色指定を2行にし、真ん中のベージュを無くしました */
-    background: linear-gradient(
-      135deg, 
-      #8cb995 0%,    /* 🌲 左上：瑞々しく深い森の緑 */
-      #7ba2c0 100%   /* 🌊 右下：美しく澄んだ瀬戸内の青 */
-    ) !important;
+    /* ⭕ メッシュグラデーション設定
+       4つの角から異なる色が溶け出すようにブレンドし、中央に光を仕込んでいます */
+    background-color: #f2f5f3 !important; /* ベースの色 */
+    background-image:
+      radial-gradient(at 0% 0%, rgba(74, 124, 89, 0.4) 0px, transparent 60%),  /* 左上：森の深緑 */
+      radial-gradient(at 100% 0%, rgba(143, 192, 169, 0.3) 0px, transparent 60%), /* 右上：明るい葉の緑 */
+      radial-gradient(at 100% 100%, rgba(39, 76, 119, 0.4) 0px, transparent 60%), /* 右下：深い海の青 */
+      radial-gradient(at 0% 100%, rgba(96, 150, 186, 0.3) 0px, transparent 60%),  /* 左下：澄んだ水の青 */
+      radial-gradient(at 50% 50%, rgba(254, 250, 224, 0.4) 0px, transparent 60%) !important; /* 中央：柔らかな木漏れ日 */
   }
 
-  /* 2. 文字のサイズ調整 */
   .hero h1 {
-    font-size: 19px !important; 
+    font-size: 19px !important;
     line-height: 1.6 !important;
-    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6) !important; 
+    /* 背景が複雑になったので、文字をくっきりさせる白シャドウを忘れずに */
+    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.5) !important;
   }
-  
-  /* 3. 次のセクションとの隙間 */
-  #service {
-    padding-top: 30px !important; 
+}
+
+/* PC大画面でも同じように綺麗なブレンドを適用 */
+@media (min-width: 769px) {
+  .hero {
+    min-height: 35vh !important;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(74, 124, 89, 0.3) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(143, 192, 169, 0.2) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(39, 76, 119, 0.3) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(96, 150, 186, 0.2) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(254, 250, 224, 0.2) 0px, transparent 50%) !important;
   }
 }
