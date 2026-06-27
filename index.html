@@ -1,54 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>杜と海 | 珪藻培養・貝類養殖</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header>
-  <div class="logo">杜と海</div>
-  <div class="menu-btn" id="menuBtn">☰</div>
-</header>
-
-<nav id="nav">
-  <a href="#home">ホーム</a>
-  <a href="#about">私たちの想い</a>
-  <a href="#service">循環する養殖</a>
-  <a href="#contact">お問い合わせ</a>
-</nav>
-
-<div class="overlay" id="overlay"></div>
-
-<section class="hero" id="home">
-  <div class="hero-box">
-    <p class="hero-sub">エネルギーの灰から、豊かな命のサイクルへ。</p>
-    <h1>杜の恵みを海へ繋ぐ、<br>新しい養殖のカタチ。</h1>
-    <div class="hero-actions">
-      <a href="#about" class="btn btn-primary">私たちの想いを見る</a>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="container">
-  <span class="section-tag">Our Story</span>
-  <h2>私たちの想い</h2>
-  <div class="split-layout">
-    <div class="text-block">
-      <h3>発電所の灰からはじまる、途切れない命の循環</h3>
-      <p>杜（森）の木々がエネルギーとなり、発電所で役割を終えたあとに残る「灰」。私たちはその灰に眠る豊かなミネラルを大切な資源として受け取ります。</p>
-      <p>灰を原料にして海の豊かなプランクトン（珪藻）を育て、それを最高の栄養として牡蠣やアサリの稚貝を健やかに育てる。陸のエネルギーを海の恵みへと還元し、次の世代へ豊かな自然を繋ぐこと。それが「杜と海」の使命です。</p>
-    </div>
-  </div>
-</section>
-
+<!-- 3. こだわりの養殖：3つの循環ステップ（横スクロール写真付き） -->
 <section id="service" class="container bg-tint">
   <div class="container-inner">
     <span class="section-tag">Business</span>
@@ -56,48 +6,76 @@
     <p class="section-lead">私たちは、陸の資源から海の命を育む、新しいサステナブルな養殖を行っています。</p>
     
     <div class="grid-layout">
+      
+      <!-- ステップ01: 森・灰 -->
       <div class="card">
         <div class="card-num">01</div>
-        <h3>珪藻（けいそう）の培養</h3>
-        <p>発電所から出た灰のミネラルを元に、貝たちの最高の餌となる栄養豊富な珪藻を自社で丁寧に一から培養します。</p>
+        <h3>杜の恵みと灰の資源</h3>
+        <p>木質バイオマス発電所で役割を終えた樹木の燃焼灰から、貝たちの栄養源となるミネラル（栄養塩）を抽出します。</p>
+        
+        <!-- 横スクロール写真エリア -->
+        <div class="image-slider">
+          <div class="slide-item">
+            <img src="forest.jpg" alt="燃料となる森・木々">
+            <span>燃料となる森・木々</span>
+          </div>
+          <div class="slide-item">
+            <img src="ash-stone.jpg" alt="原料の灰の石">
+            <span>原料の灰の石</span>
+          </div>
+          <div class="slide-item">
+            <img src="ash-powder.jpg" alt="砕いた灰">
+            <span>砕いた灰</span>
+          </div>
+        </div>
       </div>
+
+      <!-- ステップ02: 珪藻 -->
       <div class="card">
         <div class="card-num">02</div>
-        <h3>稚貝の飼育・販売</h3>
-        <p>豊かに育った珪藻を贅沢に与え、丸々と太った健康で丈夫な牡蠣やアサリの稚貝を育て、全国の養殖家の皆様へお届けします。</p>
+        <h3>珪藻（けいそう）の培養</h3>
+        <p>灰から開発した特別な栄養培地を使い、稚貝たちが大好きな栄養豊富な珪藻を、自社工場で丁寧に一から大量培養します。</p>
+        
+        <!-- 横スクロール写真エリア -->
+        <div class="image-slider">
+          <div class="slide-item">
+            <img src="diatom1.jpg" alt="培養中の珪藻 1">
+            <span>培養中の珪藻 1</span>
+          </div>
+          <div class="slide-item">
+            <img src="diatom2.jpg" alt="培養中の珪藻 2">
+            <span>培養中の珪藻 2</span>
+          </div>
+          <div class="slide-item">
+            <img src="diatom3.jpg" alt="顕微鏡の珪藻">
+            <span>顕微鏡の珪藻</span>
+          </div>
+        </div>
       </div>
+
+      <!-- ステップ03: 稚貝 -->
       <div class="card">
         <div class="card-num">03</div>
-        <h3>自然環境への貢献</h3>
-        <p>本来廃棄されるはずの灰を活用し、海の生態系の土台となるプランクトンと貝を育てることで、カーボンニュートラルな未来に貢献します。</p>
+        <h3>稚貝の飼育・販売</h3>
+        <p>自社で育てた極上の珪藻を贅沢に与え、丸々と太った健康で丈夫な牡蠣やアサリの稚貝を育て、全国の養殖家へお届けします。</p>
+        
+        <!-- 横スクロール写真エリア -->
+        <div class="image-slider">
+          <div class="slide-item">
+            <img src="oyster1.jpg" alt="牡蠣の稚貝 1">
+            <span>牡蠣の稚貝 1</span>
+          </div>
+          <div class="slide-item">
+            <img src="oyster2.jpg" alt="牡蠣の稚貝 2">
+            <span>牡蠣の稚貝 2</span>
+          </div>
+          <div class="slide-item">
+            <img src="clam1.jpg" alt="アサリの稚貝">
+            <span>アサリの稚貝</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
-
-<section id="contact" class="container">
-  <span class="section-tag">Contact</span>
-  <h2>お問い合わせ</h2>
-  <p class="section-lead">稚貝のご注文、技術提携、お取引のご相談など、お気軽にお問い合わせください。</p>
-  
-  <div class="contact-box">
-    <a href="tel:0921234567" class="contact-button tel">
-      <span class="icon">📞</span>
-      <span class="text">お電話でのご相談<br><strong>092-123-4567</strong></span>
-    </a>
-    <a href="mailto:info@example.com" class="contact-button mail">
-      <span class="icon">✉️</span>
-      <span class="text">メールでのお問い合わせ<br><strong>info@example.com</strong></span>
-    </a>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-logo">杜と海</div>
-  <p class="copyright">© 2026 杜と海 All Rights Reserved.</p>
-</footer>
-
-<script src="script.js"></script>
-
-</body>
-</html>
