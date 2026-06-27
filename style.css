@@ -437,6 +437,7 @@ footer {
   }
 }
 /* ===== 会社概要（テーブル）の設定 ===== */
+/* ===== 会社概要（テーブル）の設定：PC・スマホ共通 ===== */
 .company-table-wrapper {
   background: var(--color-card-bg);
   padding: 40px;
@@ -451,12 +452,13 @@ footer {
   font-size: 15px;
 }
 
+/* ⭕ PC・スマホ共通で、すべてに行の下側にしっかり区切り線を引く */
 .company-table tr {
-  border-bottom: 1px solid #eef2f0; /* 行ごとの区切り線 */
+  border-bottom: 1px solid #dcdcdc; /* 参考画像に近い、ハッキリ見える上品なグレー */
 }
 
 .company-table tr:last-child {
-  border-bottom: none; /* 最後の行の線は消す */
+  border-bottom: none; /* 一番最後の行の下線だけは消してスッキリさせる */
 }
 
 .company-table th, 
@@ -467,7 +469,7 @@ footer {
 }
 
 .company-table th {
-  width: 25%; /* 左側の見出しの幅 */
+  width: 25%; /* PCでの左側の見出しの幅 */
   font-family: 'Noto Serif JP', serif;
   color: var(--color-main);
   font-weight: 700;
@@ -490,31 +492,43 @@ footer {
   margin-bottom: 0;
 }
 
-/* 📱 スマホ用レスポンシブ：画面が狭いときは縦並びにする */
-/* 📱 スマホ用レスポンシブ：画面が狭いときは縦並びにする */
+/* 📱 スマホ用レスポンシブ：参考画像（image_2.png）のように横並びをキープする */
 @media (max-width: 768px) {
   .company-table-wrapper {
-    padding: 24px 16px;
+    padding: 20px 10px; /* 左右の余白を少し狭くして画面を広く使う */
+    background: #ffffff;
+    box-shadow: none;
+    border: none;
   }
   
   .company-table tr {
-    display: block;
-    padding: 15px 0;
-  }
-  
-  .company-table tr:first-child {
-    padding-top: 0;
+    display: flex; /* 左右の横並び（Flexbox）にする */
+    align-items: flex-start;
+    padding: 16px 0;
+    /* 共通設定で線を引いているので、ここでは border-bottom を書かなくてOK */
   }
   
   .company-table th, 
   .company-table td {
     display: block;
-    width: 100%;
-    padding: 4px 0;
+    padding: 0;
   }
   
   .company-table th {
-    margin-bottom: 4px;
-    white-space: nowrap; /* ⭕ 追加：文字が勝手に2行に折り返されるのを防ぐ */
+    width: 90px; /* 左側の見出しの幅を固定 */
+    min-width: 90px;
+    flex-shrink: 0;
+    color: #0055aa; /* 参考画像のような青系 */
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .company-table td {
+    width: auto;
+    flex-grow: 1;
+    padding-left: 15px; /* 見出しと内容の間のすき間 */
+    font-size: 14px;
+    line-height: 1.6;
   }
 }
