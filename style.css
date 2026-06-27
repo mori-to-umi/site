@@ -436,3 +436,83 @@ footer {
     height: 160px;
   }
 }
+/* ===== 会社概要（テーブル）の設定 ===== */
+.company-table-wrapper {
+  background: var(--color-card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(26,60,64,0.03);
+  border: 1px solid rgba(26,60,64,0.05);
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse; /* 線の重なりを防ぐ */
+  font-size: 15px;
+}
+
+.company-table tr {
+  border-bottom: 1px solid #eef2f0; /* 行ごとの区切り線 */
+}
+
+.company-table tr:last-child {
+  border-bottom: none; /* 最後の行の線は消す */
+}
+
+.company-table th, 
+.company-table td {
+  padding: 20px 10px;
+  text-align: left;
+  vertical-align: top; /* 文字が複数行になっても上揃えにする */
+}
+
+.company-table th {
+  width: 25%; /* 左側の見出しの幅 */
+  font-family: 'Noto Serif JP', serif;
+  color: var(--color-main);
+  font-weight: 700;
+}
+
+.company-table td {
+  color: var(--color-text);
+}
+
+/* 事業内容の箇条書き（ul）を綺麗に整える */
+.company-table td ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.company-table td ul li {
+  margin-bottom: 8px;
+}
+.company-table td ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* 📱 スマホ用レスポンシブ：画面が狭いときは縦並びにする */
+@media (max-width: 768px) {
+  .company-table-wrapper {
+    padding: 24px 16px;
+  }
+  
+  .company-table tr {
+    display: block;
+    padding: 15px 0;
+  }
+  
+  .company-table tr:first-child {
+    padding-top: 0;
+  }
+  
+  .company-table th, 
+  .company-table td {
+    display: block;
+    width: 100%;
+    padding: 4px 0;
+  }
+  
+  .company-table th {
+    margin-bottom: 4px;
+  }
+}
