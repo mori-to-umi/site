@@ -82,8 +82,6 @@ header {
   width: 100%;
   height: 70px;
   background-color: rgba(250, 249, 246, 0.85);
-  background-image: radial-gradient(circle at 10% 20%, rgba(26,60,64,0.05), transparent 30%),
-                    radial-gradient(circle at 90% 80%, rgba(29,45,80,0.03), transparent 30%);
   backdrop-filter: blur(12px);
   display: flex;
   justify-content: space-between;
@@ -104,7 +102,6 @@ header {
   cursor: pointer;
   color: var(--color-main);
   z-index: 9999;
-  transition: color 0.3s;
 }
 
 /* ===== ドロワーメニュー ===== */
@@ -160,7 +157,7 @@ nav a:hover {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 90px 24px; /* 上下余白を適度にスマート化 */
+  padding: 80px 24px;
 }
 
 .bg-tint {
@@ -173,71 +170,40 @@ nav a:hover {
   padding: 0 24px;
 }
 
-/* ===== 1. ヒーロー（スクロール不要で美しく収まる設計） ===== */
-/* ===== 1. ヒーロー（3色グラデーション ＆ 究極の引き算設計） ===== */
+/* ===== 1. ヒーロー（コンパクト3色グラデーション仕様） ===== */
 .hero {
-  min-height: 50vh; /* ⭕ 縦幅を画面の半分にして、無駄な余白を完全にシャットアウト */
+  min-height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
   
-  /* ⭕ 左上(緑) ── 中央(砂浜ベージュ) ── 右下(海の青) へ美しく移り変わる特別なグラデーション */
+  /* 左上(緑) ── 中央(砂浜ベージュ) ── 右下(海の青) の美しい移り変わり */
   background: linear-gradient(
     135deg, 
-    #d1e4d6 0%,    /* 左上：新緑のような、優しく瑞々しい杜の緑 */
-    #eadecd 50%,   /* 中央：砂浜や貝殻を思わせる、温かみのあるベージュ */
-    #cbdbe6 100%   /* 右下：澄んだ美しい瀬戸内の海のような青 */
+    #d1e4d6 0%,    /* 杜の緑 */
+    #eadecd 50%,   /* 砂浜のベージュ */
+    #cbdbe6 100%   /* 海の青 */
   );
   
-  padding: 80px 24px 0; /* 上のヘッダー分だけ余白を取り、下は限界まで詰めました */
+  padding: 110px 24px 40px; /* 上は固定ヘッダーと被らないゆとりを持たせ、下は詰める */
 }
 
 .hero-box {
-  /* ⭕ 文字を主役にするため、後ろの白い四角の箱や影をあえて消し、背景のグラデーションと一体化させました */
   max-width: 800px;
   width: 100%;
   text-align: center;
+  padding: 0;
 }
 
 .hero h1 {
   font-family: 'Noto Serif JP', serif;
-  font-size: 36px; /* 文字を少し大きくして存在感をアップ */
+  font-size: 34px;
   font-weight: 700;
-  letter-spacing: 0.12em; /* 文字の間隔を広げて、高級感と凛とした空気感を */
-  color: var(--color-main); /* 杜の深緑色で文字をパキッと引き締め */
+  letter-spacing: 0.12em;
+  color: var(--color-main);
   line-height: 1.8;
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); /* グラデーションの上でも文字がくっきり読める隠し味 */
-}
-
-
-.hero-lead {
-  font-size: 15px;
-  color: var(--color-text);
-  line-height: 1.8;
-  margin-bottom: 25px;
-}
-
-/* 上品なボタン */
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 12px 32px;
-  border-radius: 50px;
-  font-size: 14px;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(26,60,64,0.12);
-}
-
-.btn-primary {
-  background: var(--color-main);
-  color: #ffffff;
-}
-
-.btn-primary:hover {
-  background: #245257;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(26,60,64,0.2);
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4);
 }
 
 /* ===== 2. 循環する養殖（グリッド & カード & 横スクロール） ===== */
@@ -322,7 +288,7 @@ nav a:hover {
   text-align: center;
 }
 
-/* ===== 3. 会社概要（PC・スマホ共通区切り線） ===== */
+/* ===== 3. 会社概要（PC・スマホ共通デザイン） ===== */
 .company-table-wrapper {
   background: var(--color-card-bg);
   padding: 40px;
@@ -337,8 +303,9 @@ nav a:hover {
   font-size: 15px;
 }
 
+/* 常に行の間にハッキリとした綺麗なグレーの線を引く */
 .company-table tr {
-  border-bottom: 1px solid #dcdcdc; /* いつでも表示される綺麗な区切り線 */
+  border-bottom: 1px solid #dcdcdc; 
 }
 
 .company-table tr:last-child {
@@ -444,40 +411,39 @@ footer {
   font-size: 13px;
 }
 
-/* ===== 📱 スマホ・タブレット用レスポンシブ調整 ===== */
+/* ===== 📱 スマホ用レスポンス完全ガード（画面幅768px以下） ===== */
 @media (max-width: 768px) {
   .grid-layout, .contact-box {
     grid-template-columns: 1fr;
   }
   
-  /* スマホでのみ改行を有効にするための設定 */
-  .sp-only {
-    display: block;
+  /* ⭕ スマホのグラデーションエリアの縦幅を全画面(100vh)からコンパクトな固定サイズに潰す */
+  .hero {
+    min-height: 250px !important;
+    height: 250px !important;
+    padding: 95px 20px 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ⭕ スマホ画面に綺麗に収まり、美しく佇む文字サイズ */
+  .hero h1 {
+    font-size: 20px !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.08em !important;
   }
   
-  .hero {
-    min-height: 100vh; /* スマホでは画面いっぱいに広げてすっぽり収める */
-  }
-
-  .hero-box {
-    padding: 30px 16px;
-  }
-
-  .hero h1 {
-    font-size: 23px; /* スマホでも1画面に必ず収まるサイズに調整 */
-  }
-
-  .hero-lead {
-    font-size: 13.5px;
-    text-align: left; /* 長めの概要はスマホだと左揃えが見やすい */
-    line-height: 1.7;
+  /* ヒーローの下の余白も詰める */
+  #service {
+    padding-top: 40px !important; 
   }
   
   .container {
-    padding: 60px 20px;
+    padding: 50px 20px;
   }
 
-  /* 会社概要：スマホでも綺麗に横並びをキープ */
+  /* ⭕ 会社概要：スマホ時も横並びの関係をガチッと固定 */
   .company-table-wrapper {
     padding: 20px 10px;
     background: #ffffff;
@@ -501,7 +467,7 @@ footer {
     width: 90px;
     min-width: 90px;
     flex-shrink: 0;
-    color: #0055aa;
+    color: #0055aa; /* 綺麗な青系に */
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -516,11 +482,8 @@ footer {
   }
 }
 
-/* スマホ以外（PC）ではスマホ用改行タグを無視する */
+/* スマホ以外（PC） */
 @media (min-width: 769px) {
-  .sp-only {
-    display: none;
-  }
   .slide-item {
     flex: 0 0 90%;
   }
@@ -528,3 +491,5 @@ footer {
     height: 160px;
   }
 }
+
+  
