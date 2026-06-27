@@ -492,69 +492,69 @@ footer {
   }
 }
 /* ==========================================
-   【完全調和版】ヘッダー透明化 ＆ 境界線なしメッシュグラデーション
+   【オーバル（楕円）ライトブレンド版】
+   ヘッダーの白と調和し、中央をぽわーんと白く抜く極上デザイン
    ========================================== */
 
-/* 1. 【全員共通】ヘッダーの白い帯を消して、完全に透明化します */
+/* 1. 共通のヘッダーを「元の綺麗な白（半透明）」に戻して固定します */
 header {
-  background-color: transparent !important;
-  background-image: none !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important; /* 下の影も消して、背景と完全に一体化 */
+  background-color: rgba(250, 249, 246, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 2px 15px rgba(26,60,64,0.05) !important;
 }
-
-/* ロゴとメニューボタンの色は、ブランドカラーの深緑のまま優しく佇ませます */
 header .logo, 
 header .menu-btn {
   color: var(--color-main) !important;
 }
 
-/* 2. 📱 スマホ（画面幅768px以下）の配置と色の決定版 */
+/* 2. 📱 スマホ（画面幅768px以下）の設定 */
 @media (max-width: 768px) {
   .hero {
-    /* 高さは「180px」のコンパクトさをキープ */
-    min-height: 180px !important;
-    height: 180px !important;
-    
-    /* ⭕ ヘッダーを透明にしたので、文字が上に被らないよう上の余白を少し調整 */
-    padding-top: 95px !important;
+    /* ⭕ 縮めすぎによる窮屈感をなくすため、高さを「210px」にふっくらと戻しました */
+    min-height: 210px !important;
+    height: 210px !important;
+    padding-top: 100px !important; /* ヘッダーから綺麗に離します */
     padding-bottom: 25px !important;
     
-    /* ⭕ 中央の「白」を廃止。全体に淡く優しいニュアンスカラーをブレンド */
-    background-color: #f7f9f7 !important; 
+    /* ⭕ 魔法の多色オーバルグラデーション
+       中央(50% 50%)に「完全な白い楕円」を作り、そこから外側に向けて
+       ぽわーーんと優しく「緑」と「青」のグラデーションへと溶け込ませていく特殊な設定です */
+    background-color: #ffffff !important;
     background-image:
-      radial-gradient(at 0% 0%, rgba(120, 165, 133, 0.25) 0px, transparent 70%),   /* 🌲 左上：優しい杜の緑 */
-      radial-gradient(at 100% 0%, rgba(222, 198, 164, 0.2) 0px, transparent 70%),  /* 🏖️ 右上：ほんのり温かい砂浜ベージュ */
-      radial-gradient(at 100% 100%, rgba(123, 162, 192, 0.25) 0px, transparent 70%),/* 🌊 右下：澄んだ瀬戸内の青 */
-      radial-gradient(at 0% 100%, rgba(162, 202, 175, 0.15) 0px, transparent 70%) !important; /* 左下：柔らかな光の緑 */
+      radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 35%, transparent 75%),
+      radial-gradient(at 0% 20%, rgba(120, 165, 133, 0.35) 0px, transparent 65%),   /* 左上：杜の緑 */
+      radial-gradient(at 100% 20%, rgba(143, 192, 169, 0.25) 0px, transparent 65%), /* 右上：明るい緑 */
+      radial-gradient(at 100% 90%, rgba(39, 76, 119, 0.3) 0px, transparent 65%),   /* 右下：海の青 */
+      radial-gradient(at 0% 90%, rgba(96, 150, 186, 0.25) 0px, transparent 65%) !important;  /* 左下：水の青 */
   }
 
-  /* キーワード（文字）の配置とデザイン */
+  /* キーワード（文字）の設定 */
   .hero h1 {
     font-size: 19px !important;
     line-height: 1.6 !important;
     color: var(--color-main) !important;
     letter-spacing: 0.08em !important;
-    /* ⭕ 背景が優しくなったので、強い影を無くし、ごく自然に馴染ませます */
-    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8) !important;
+    /* ⭕ 周りが白く抜けたので、文字の影は薄いモヤ程度にしてスッキリと */
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5) !important;
   }
   
   /* 下の白いセクションとのつながり */
   #service {
-    padding-top: 40px !important; 
+    padding-top: 35px !important; 
   }
 }
 
-/* 3. 【PC版】も同じく透明感のある美しい一体型に */
+/* 3. 【PC版】も同じく中央をオーバルで美しく抜きます */
 @media (min-width: 769px) {
   .hero {
     min-height: 38vh !important;
-    padding-top: 120px !important;
-    background-color: #f7f9f7 !important;
+    padding-top: 110px !important;
+    background-color: #ffffff !important;
     background-image:
-      radial-gradient(at 0% 0%, rgba(120, 165, 133, 0.2) 0px, transparent 60%),
-      radial-gradient(at 100% 0%, rgba(222, 198, 164, 0.15) 0px, transparent 60%),
-      radial-gradient(at 100% 100%, rgba(123, 162, 192, 0.2) 0px, transparent 60%),
-      radial-gradient(at 0% 100%, rgba(162, 202, 175, 0.1) 0px, transparent 60%) !important;
+      radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 40%, transparent 80%),
+      radial-gradient(at 0% 20%, rgba(120, 165, 133, 0.25) 0px, transparent 65%),
+      radial-gradient(at 100% 20%, rgba(143, 192, 169, 0.15) 0px, transparent 65%),
+      radial-gradient(at 100% 90%, rgba(39, 76, 119, 0.25) 0px, transparent 65%),
+      radial-gradient(at 0% 90%, rgba(96, 150, 186, 0.15) 0px, transparent 65%) !important;
   }
 }
