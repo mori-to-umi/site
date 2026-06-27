@@ -34,7 +34,7 @@ h2 {
   padding-left: 15px;
   margin-bottom: 30px;
 }
-
+ふ
 /* 見出しの左側にアクセントとして「杜の緑」の縦線を入れる */
 h2::before {
   content: "";
@@ -135,7 +135,7 @@ nav.show {
 
 nav a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--color-text);
   font-size: 16px;
   font-weight: 600;
   padding: 12px 16px;
