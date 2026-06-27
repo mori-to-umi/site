@@ -1,4 +1,6 @@
+console.log("JSロードOK");
+
 function toggleMenu() {
-  alert("JSは読み込まれてる");
+  console.log("クリックOK");
   document.getElementById("nav").classList.toggle("show");
 }
