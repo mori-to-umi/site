@@ -3,23 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>〇〇株式会社</title>
+  <title>杜と海 | 貝の養殖</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
-  <div class="logo">〇〇株式会社</div>
+  <div class="logo">杜と海</div>
   <div class="menu-btn" id="menuBtn">☰</div>
 </header>
 
 <nav id="nav">
   <a href="#home">ホーム</a>
-  <a href="#about">会社概要</a>
-  <a href="#service">サービス</a>
+  <a href="#about">私たちの想い</a>
+  <a href="#service">こだわりの養殖</a>
   <a href="#contact">お問い合わせ</a>
 </nav>
 
@@ -27,30 +29,72 @@
 
 <section class="hero" id="home">
   <div class="hero-box">
-    <h1>やさしさと自然を大切に</h1>
+    <p class="hero-sub">自然の循環を、そのまま食卓へ。</p>
+    <h1>森の恵みと、海の育み。</h1>
+    <div class="hero-actions">
+      <a href="#about" class="btn btn-primary">私たちの想い</a>
+    </div>
   </div>
 </section>
 
-<section id="about">
-  <h2>会社概要</h2>
-  <div class="card">自然と調和した事業を行っています。</div>
+<section id="about" class="container">
+  <span class="section-tag">Concept</span>
+  <h2>私たちの想い</h2>
+  <div class="split-layout">
+    <div class="text-block">
+      <h3>杜と海、途切れない命の循環</h3>
+      <p>広大な森林で蓄えられたミネラル豊富な栄養素は、雨と共に川を下り、海へと注ぎます。この「杜の栄養」こそが、豊かなプランクトンを育み、最高に美味しい貝を育てる源泉です。</p>
+      <p>私たちは、この美しい自然のサイクルを大切に守りながら、誠実に養殖を行っています。</p>
+    </div>
+  </div>
 </section>
 
-<section id="service">
-  <h2>サービス</h2>
-  <div class="card">・〇〇サービス</div>
+<section id="service" class="container bg-tint">
+  <div class="container-inner">
+    <span class="section-tag">Aquaculture</span>
+    <h2>こだわりの養殖</h2>
+    <p class="section-lead">杜の豊かな栄養と、厳しい海の潮流が交差する最高の環境で育てています。</p>
+    
+    <div class="grid-layout">
+      <div class="card">
+        <div class="card-icon">🦪</div>
+        <h3>厳選された真牡蠣</h3>
+        <p>一粒一粒に杜の旨味が凝縮された、身の締まった極上の牡蠣です。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌊</div>
+        <h3>恵まれた養殖環境</h3>
+        <p>波の静かさと潮流の速さが絶妙に交わる海域を選び抜いています。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <h3>徹底した品質管理</h3>
+        <p>自然の恵みをそのままに、安全で新鮮な状態でお届けします。</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="container">
+  <span class="section-tag">Contact</span>
   <h2>お問い合わせ</h2>
-  <div class="card">
-    📞 <a href="tel:0921234567">電話する</a><br>
-    ✉️ <a href="mailto:info@example.com">メールする</a>
+  <p class="section-lead">商品のご注文、お取引のご相談など、お気軽にお問い合わせください。</p>
+  
+  <div class="contact-box">
+    <a href="tel:0921234567" class="contact-button tel">
+      <span class="icon">📞</span>
+      <span class="text">お電話でのご相談<br><strong>092-123-4567</strong></span>
+    </a>
+    <a href="mailto:info@example.com" class="contact-button mail">
+      <span class="icon">✉️</span>
+      <span class="text">メールでのお問い合わせ<br><strong>info@example.com</strong></span>
+    </a>
   </div>
 </section>
 
 <footer>
-  © 2026 〇〇株式会社
+  <div class="footer-logo">杜と海</div>
+  <p class="copyright">© 2026 杜と海 All Rights Reserved.</p>
 </footer>
 
 <script src="script.js"></script>
