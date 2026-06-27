@@ -174,41 +174,41 @@ nav a:hover {
 }
 
 /* ===== 1. ヒーロー（スクロール不要で美しく収まる設計） ===== */
+/* ===== 1. ヒーロー（3色グラデーション ＆ 究極の引き算設計） ===== */
 .hero {
-  min-height: 95vh; /* どんな画面幅でも綺麗に包み込む最小高 */
+  min-height: 50vh; /* ⭕ 縦幅を画面の半分にして、無駄な余白を完全にシャットアウト */
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #e3ede4 0%, #e2e8f0 100%);
-  padding: 90px 24px 40px; /* 上部ヘッダー分の余白を確保 */
+  
+  /* ⭕ 左上(緑) ── 中央(砂浜ベージュ) ── 右下(海の青) へ美しく移り変わる特別なグラデーション */
+  background: linear-gradient(
+    135deg, 
+    #d1e4d6 0%,    /* 左上：新緑のような、優しく瑞々しい杜の緑 */
+    #eadecd 50%,   /* 中央：砂浜や貝殻を思わせる、温かみのあるベージュ */
+    #cbdbe6 100%   /* 右下：澄んだ美しい瀬戸内の海のような青 */
+  );
+  
+  padding: 80px 24px 0; /* 上のヘッダー分だけ余白を取り、下は限界まで詰めました */
 }
 
 .hero-box {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  padding: 40px 30px;
-  border-radius: 24px;
-  box-shadow: 0 15px 40px rgba(26,60,64,0.05);
-  max-width: 720px;
+  /* ⭕ 文字を主役にするため、後ろの白い四角の箱や影をあえて消し、背景のグラデーションと一体化させました */
+  max-width: 800px;
   width: 100%;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 32px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 36px; /* 文字を少し大きくして存在感をアップ */
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--color-main);
-  line-height: 1.5;
+  letter-spacing: 0.12em; /* 文字の間隔を広げて、高級感と凛とした空気感を */
+  color: var(--color-main); /* 杜の深緑色で文字をパキッと引き締め */
+  line-height: 1.8;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); /* グラデーションの上でも文字がくっきり読める隠し味 */
 }
 
-/* キャッチコピーと概要の間の細い区切り線 */
-.hero-divider {
-  width: 40px;
-  height: 2px;
-  background-color: var(--color-accent);
-  margin: 20px auto;
-}
 
 .hero-lead {
   font-size: 15px;
