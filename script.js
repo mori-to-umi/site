@@ -1,14 +1,20 @@
-<script>
-function toggleMenu() {
-  document.getElementById("nav").classList.toggle("show");
-  document.querySelector(".overlay").classList.toggle("show");
-}
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+const overlay = document.getElementById("overlay");
 
-// ★リンク押したら閉じる
+menuBtn.addEventListener("click", () => {
+  nav.classList.toggle("show");
+  overlay.classList.toggle("show");
+});
+
+overlay.addEventListener("click", () => {
+  nav.classList.remove("show");
+  overlay.classList.remove("show");
+});
+
 document.querySelectorAll("nav a").forEach(link => {
   link.addEventListener("click", () => {
-    document.getElementById("nav").classList.remove("show");
-    document.querySelector(".overlay").classList.remove("show");
+    nav.classList.remove("show");
+    overlay.classList.remove("show");
   });
 });
-</script>
