@@ -34,7 +34,7 @@ h2 {
   padding-left: 15px;
   margin-bottom: 30px;
 }
-ふ
+
 /* 見出しの左側にアクセントとして「杜の緑」の縦線を入れる */
 h2::before {
   content: "";
@@ -76,7 +76,7 @@ p:last-child {
   margin-bottom: 40px;
 }
 
-/* ===== ヘッダー ===== */
+/* ===== ヘッダー（すりガラス風のおしゃれなデザイン） ===== */
 header {
   position: fixed;
   top: 0;
@@ -135,7 +135,7 @@ nav.show {
 
 nav a {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--color-text); /* 修正済み */
   font-size: 16px;
   font-weight: 600;
   padding: 12px 16px;
@@ -179,7 +179,7 @@ nav a:hover {
   padding: 0 24px;
 }
 
-/* ===== 1. ヒーロー（最初の画面） ===== */
+/* ===== 1. ヒーロー（最初の画面：美しいグラデーション） ===== */
 .hero {
   height: 90vh; /* 100vhから少し減らして下に続く雰囲気を持たせる */
   display: flex;
@@ -249,7 +249,7 @@ nav a:hover {
   border: 1px solid rgba(26,60,64,0.05);
 }
 
-/* ===== 3. グリッドレイアウト（3枚並び・ステップ表示） ===== */
+/* ===== 3. 循環する養殖（グリッド & カード & 横スクロール） ===== */
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -261,7 +261,7 @@ nav a:hover {
   padding: 35px 25px;
   border-radius: 18px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.03);
-  border-top: 4px solid var(--color-main);
+  border-top: 4px solid var(--color-main); /* 上側に深い緑のアクセント線 */
   position: relative;
   transition: transform 0.3s;
   
@@ -288,7 +288,7 @@ nav a:hover {
   margin-bottom: 24px;
 }
 
-/* ===== カード内の横スクロール画像ギャラリー設定 ===== */
+/* カード内の横スクロール画像ギャラリー設定 */
 .image-slider {
   display: flex;
   gap: 12px;
