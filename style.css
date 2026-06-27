@@ -494,46 +494,47 @@ footer {
 
 
 /* ==========================================
-   【多色ブレンド版】奥行きのあるメッシュグラデーション
+   【多色ブレンド＋中央ホワイト版】文字が際立つ光の演出
    ========================================== */
 
 @media (max-width: 768px) {
   
   .hero {
-    /* 👇 【高さ】少し余裕を持たせて「180px」に設定。ここを増減して高さを調整してください */
     min-height: 180px !important;
     height: 180px !important;
     padding-top: 85px !important;
     padding-bottom: 20px !important;
     
-    /* ⭕ メッシュグラデーション設定
-       4つの角から異なる色が溶け出すようにブレンドし、中央に光を仕込んでいます */
-    background-color: #f2f5f3 !important; /* ベースの色 */
+    background-color: #ffffff !important; /* ベースを白に */
     background-image:
-      radial-gradient(at 0% 0%, rgba(74, 124, 89, 0.4) 0px, transparent 60%),  /* 左上：森の深緑 */
-      radial-gradient(at 100% 0%, rgba(143, 192, 169, 0.3) 0px, transparent 60%), /* 右上：明るい葉の緑 */
-      radial-gradient(at 100% 100%, rgba(39, 76, 119, 0.4) 0px, transparent 60%), /* 右下：深い海の青 */
-      radial-gradient(at 0% 100%, rgba(96, 150, 186, 0.3) 0px, transparent 60%),  /* 左下：澄んだ水の青 */
-      radial-gradient(at 50% 50%, rgba(254, 250, 224, 0.4) 0px, transparent 60%) !important; /* 中央：柔らかな木漏れ日 */
+      /* ⭕ 中央の白い光（ここを一番強くしています） */
+      radial-gradient(at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 70%),
+      /* 四隅の色（中央を邪魔しないよう、少し外側に配置） */
+      radial-gradient(at 0% 0%, rgba(74, 124, 89, 0.35) 0px, transparent 60%),   /* 左上：森 */
+      radial-gradient(at 100% 0%, rgba(143, 192, 169, 0.25) 0px, transparent 60%), /* 右上：葉 */
+      radial-gradient(at 100% 100%, rgba(39, 76, 119, 0.35) 0px, transparent 60%), /* 右下：海 */
+      radial-gradient(at 0% 100%, rgba(96, 150, 186, 0.25) 0px, transparent 60%) !important; /* 左下：水 */
   }
 
   .hero h1 {
     font-size: 19px !important;
     line-height: 1.6 !important;
-    /* 背景が複雑になったので、文字をくっきりさせる白シャドウを忘れずに */
-    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.5) !important;
+    /* 真ん中が白くなったので、文字の影は「白」ではなく「ごく薄いグレー」にして落ち着かせます */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 5px rgba(255, 255, 255, 0.5) !important;
+    position: relative;
+    z-index: 2;
   }
 }
 
-/* PC大画面でも同じように綺麗なブレンドを適用 */
+/* PC版も同様に真ん中を明るく */
 @media (min-width: 769px) {
   .hero {
     min-height: 35vh !important;
     background-image:
-      radial-gradient(at 0% 0%, rgba(74, 124, 89, 0.3) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(143, 192, 169, 0.2) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(39, 76, 119, 0.3) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(96, 150, 186, 0.2) 0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(254, 250, 224, 0.2) 0px, transparent 50%) !important;
+      radial-gradient(at 50% 50%, rgba(255, 255, 255, 0.7) 0%, transparent 70%),
+      radial-gradient(at 0% 0%, rgba(74, 124, 89, 0.25) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(143, 192, 169, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(39, 76, 119, 0.25) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(96, 150, 186, 0.15) 0px, transparent 50%) !important;
   }
 }
