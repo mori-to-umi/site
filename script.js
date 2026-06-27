@@ -1,3 +1,1 @@
-function toggleMenu() {
-  document.getElementById("nav").classList.toggle("show");
-}
+alert("JSは読み込まれてる");
