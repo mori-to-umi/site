@@ -1,6 +1,261 @@
-/* ===== カード内の横スクロール画像ギャラリー設定 ===== */
+/* ===== 共通変数と基本設定 ===== */
+:root {
+  --color-base: #FAF9F6;      /* 温かみのあるオフホワイト */
+  --color-main: #1A3C40;      /* 杜の深緑（ブランドカラー） */
+  --color-sub: #1D2D50;       /* 深い海の青（フッターなど） */
+  --color-accent: #D4A373;    /* 貝や砂浜のベージュ（アクセント） */
+  --color-text: #2C3E35;      /* 読みやすい濃い緑黒 */
+  --color-card-bg: #FFFFFF;
+}
 
-/* カード自体を縦方向のレイアウトにして、文章と写真の高さを揃えやすくする */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--color-base);
+  color: var(--color-text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== タイトル・見出しの洗練（明朝体） ===== */
+h1, h2, h3, .logo, .footer-logo {
+  font-family: 'Noto Serif JP', serif;
+  color: var(--color-main);
+  margin: 0;
+}
+
+h2 {
+  font-size: 28px;
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 30px;
+}
+
+/* 見出しの左側にアクセントとして「杜の緑」の縦線を入れる */
+h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 5px;
+  background-color: var(--color-main);
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+p {
+  margin: 0 0 16px 0;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* 英語の小さなタグ（デザインのアクセント） */
+.section-tag {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.section-lead {
+  font-size: 16px;
+  color: #55665c;
+  margin-bottom: 40px;
+}
+
+/* ===== ヘッダー ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(250, 249, 246, 0.85); /* 半透明にして下のコンテンツを薄く透かす */
+  background-image: radial-gradient(circle at 10% 20%, rgba(26,60,64,0.05), transparent 30%),
+                    radial-gradient(circle at 90% 80%, rgba(29,45,80,0.03), transparent 30%);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+
+  box-shadow: 0 2px 15px rgba(26,60,64,0.05);
+  z-index: 3000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.menu-btn {
+  font-size: 26px;
+  cursor: pointer;
+  color: var(--color-main);
+  z-index: 9999;
+  transition: color 0.3s;
+}
+
+/* ===== ドロワーメニュー ===== */
+nav {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 260px;
+  height: 100vh;
+  background: var(--color-base);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 100px 24px 24px;
+  box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+  transition: right 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 2500;
+}
+
+nav.show {
+  right: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+nav a:hover {
+  background: rgba(26,60,64,0.06);
+  color: var(--color-main);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(29,45,80,0.3); /* 海の青を混ぜた上品な影に */
+  display: none;
+  z-index: 2000;
+  backdrop-filter: blur(2px);
+}
+
+.overlay.show {
+  display: block;
+}
+
+/* ===== セクション汎用設定 ===== */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 24px;
+}
+
+/* 背景を少し変えてリズムをつける用 */
+.bg-tint {
+  background-color: #f2f5f3;
+  max-width: 100%;
+}
+.container-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== 1. ヒーロー（最初の画面） ===== */
+.hero {
+  height: 90vh; /* 100vhから少し減らして下に続く雰囲気を持たせる */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* 杜の緑と海の青をグラデーションで表現 */
+  background: linear-gradient(135deg, #e3ede4 0%, #e2e8f0 100%);
+  padding: 0 24px;
+}
+
+.hero-box {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 60px 40px;
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(26,60,64,0.06);
+  max-width: 640px;
+  width: 100%;
+}
+
+.hero-sub {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: #55665c;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-main);
+  line-height: 1.4;
+  margin-bottom: 30px;
+}
+
+/* ===== 上品なボタン（CTA） ===== */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 14px 36px;
+  border-radius: 50px; /* 丸みのあるプロっぽいボタン */
+  font-size: 15px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(26,60,64,0.15);
+}
+
+.btn-primary {
+  background: var(--color-main);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #245257;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26,60,64,0.25);
+}
+
+/* ===== 2. コンセプト（テキストブロック） ===== */
+.text-block {
+  background: var(--color-card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(26,60,64,0.03);
+  border: 1px solid rgba(26,60,64,0.05);
+}
+
+/* ===== 3. グリッドレイアウト（3枚並び・ステップ表示） ===== */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
 .card {
   background: var(--color-card-bg);
   padding: 35px 25px;
@@ -14,13 +269,26 @@
   flex-direction: column;
 }
 
-/* カード内の説明文の後に少し余白を空けて、写真を下部に固定 */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ステップ数（01, 02..）の数字用スタイリング */
+.card-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-accent); /* ベージュ色で上品に数字を目立たせる */
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
 .card p {
   flex-grow: 1; /* 文章の長さに合わせて自動で伸び縮み */
   margin-bottom: 24px;
 }
 
-/* スライダー全体の枠 */
+/* ===== カード内の横スクロール画像ギャラリー設定 ===== */
 .image-slider {
   display: flex;
   gap: 12px;
@@ -31,7 +299,7 @@
   margin: 0 -5px; /* 微調整 */
 }
 
-/* スクロールバーのデザインをシンプルでお洒落に（WindowsやChrome用） */
+/* スクロールバーのデザインをシンプルでお洒落に */
 .image-slider::-webkit-scrollbar {
   height: 5px;
 }
@@ -40,13 +308,13 @@
   border-radius: 10px;
 }
 .image-slider::-webkit-scrollbar-thumb {
-  background: rgba(212, 163, 115, 0.4); /* アクセントのベージュを薄く使用 */
+  background: rgba(212, 163, 115, 0.4);
   border-radius: 10px;
 }
 
 /* スライドされる1枚1枚の画像ブロック */
 .slide-item {
-  flex: 0 0 85%; /* カード幅に対して85%のサイズで写真を表示（次の写真が少しチラ見えする絶妙なサイズ） */
+  flex: 0 0 85%; /* カード幅に対して85%のサイズで写真を表示（チラ見え効果） */
   scroll-snap-align: start; /* スナップの基準を左端に */
   position: relative;
 }
@@ -70,7 +338,96 @@
   text-align: center;
 }
 
-/* パソコンなどの大画面では、スライダの写真サイズを少し小さくして見やすく調整 */
+/* ===== 4. お問い合わせ（2列並びボタン） ===== */
+.contact-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--color-card-bg);
+  box-shadow: 0 8px 25px rgba(26,60,64,0.04);
+  transition: all 0.3s;
+  border: 1px solid rgba(26,60,64,0.05);
+}
+
+.contact-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(26,60,64,0.08);
+}
+
+.contact-button .icon {
+  font-size: 28px;
+  background: #f0f4f2;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.contact-button .text {
+  font-size: 14px;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.contact-button .text strong {
+  font-size: 18px;
+  color: var(--color-main);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ===== フッター ===== */
+footer {
+  background: var(--color-sub); /* 海の深みを感じるディープブルー */
+  padding: 60px 24px;
+  text-align: center;
+  color: rgba(250, 249, 246, 0.6);
+}
+
+.footer-logo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+.copyright {
+  font-size: 13px;
+}
+
+/* ===== 📱 スマホ・タブレット用レスポンシブ調整 ===== */
+@media (max-width: 768px) {
+  /* グリッドを縦1列にする */
+  .grid-layout, .contact-box {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero h1 {
+    font-size: 28px;
+  }
+  
+  .hero-box {
+    padding: 40px 20px;
+  }
+  
+  .container {
+    padding: 70px 20px;
+  }
+}
+
+/* 大画面（PC等）での追加微調整 */
 @media (min-width: 769px) {
   .slide-item {
     flex: 0 0 90%;
