@@ -21,6 +21,16 @@ header {
   padding: 0 18px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   z-index: 3000;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-weight: 600;
+}
+
+.menu-btn {
+  font-size: 28px;
+  cursor: pointer;
 }
 
 /* ===== メニュー ===== */
@@ -34,9 +44,13 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding: 80px 18px;
+
+  /* ⭐ここが重要（ヘッダー回避） */
+  padding: 90px 18px 18px;
+
   box-shadow: -10px 0 30px rgba(0,0,0,0.08);
   transition: 0.35s ease;
+  z-index: 2500;
 }
 
 nav a {
@@ -61,6 +75,7 @@ nav.show {
   inset: 0;
   background: rgba(0,0,0,0.35);
   display: none;
+  z-index: 2000;
 }
 
 .overlay.show {
