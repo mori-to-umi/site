@@ -495,46 +495,35 @@ footer {
 /* ==========================================
    最下部に貼り付けて、自分で数値を調整するブロック
    ========================================== */
-/* ===== 1. ヒーロー（高さをさらに3分の2に縮小 ＆ 色を濃く鮮やかに調整） ===== */
-.hero {
-  min-height: 28vh !important; /* ⭕ PC大画面でも無駄に広がらないサイズに */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* ⭕ グラデーションの色合いを一段と濃く、鮮やかなプロ仕様にリッチ化 */
-  background: linear-gradient(
-    135deg, 
-    #a2caa6 0%,    /* 👈 左上：より瑞々しく、新緑の深みを感じる杜の緑 */
-    #9cbcd4 100%   /* 👈 右下：瀬戸内の深く澄んだ海をイメージしたブルー */
-  );
-  
-  padding: 100px 24px 30px !important; /* 上下の余白を極限まで引き締め */
-}
+/* ==========================================
+   【2色グラデーション版】最下部のブロックをこれに書き換えてください
+   ========================================== */
 
-.hero h1 {
-  font-size: 32px !important;
-  color: var(--color-main) !important;
-  /* ⭕ 色を濃くした背景でも、文字の輪郭がピシッと美しく浮き出るように白文字シャドウを強化 */
-  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.7), 0 1px 2px rgba(255, 255, 255, 0.5) !important;
-}
-
-/* ===== 📱 スマホ用レスポンシブ（250pxの3分の2、約170pxに潰す） ===== */
 @media (max-width: 768px) {
+  
+  /* 1. グラデーションエリア（砂浜を消して、緑と青の2色に） */
   .hero {
-    /* ⭕ スマホでの縦幅を250pxの「約3分の2（170px）」にバッサリ潰しました！ */
-    min-height: 170px !important;
-    height: 170px !important;
-    padding: 85px 20px 15px !important; /* スマホのヘッダー直下ギリギリまで文字を上に詰める */
+    min-height: 190px !important;
+    height: 190px !important;
+    padding-top: 80px !important;
+    padding-bottom: 20px !important;
+    
+    /* ⭕ 3行だった色指定を2行にし、真ん中のベージュを無くしました */
+    background: linear-gradient(
+      135deg, 
+      #8cb995 0%,    /* 🌲 左上：瑞々しく深い森の緑 */
+      #7ba2c0 100%   /* 🌊 右下：美しく澄んだ瀬戸内の青 */
+    ) !important;
   }
 
+  /* 2. 文字のサイズ調整 */
   .hero h1 {
-    font-size: 19px !important; /* 狭い画面でも綺麗に2行が収まるベストサイズ */
-    line-height: 1.5 !important;
-    letter-spacing: 0.06em !important;
+    font-size: 19px !important; 
+    line-height: 1.6 !important;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6) !important; 
   }
   
-  /* 次のセクション（循環する養殖事業）との間の隙間もさらに詰めました */
+  /* 3. 次のセクションとの隙間 */
   #service {
     padding-top: 30px !important; 
   }
