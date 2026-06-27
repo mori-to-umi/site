@@ -35,7 +35,6 @@ h2 {
   margin-bottom: 30px;
 }
 
-/* 見出しの左側にアクセントとして「杜の緑」の縦線を入れる */
 h2::before {
   content: "";
   position: absolute;
@@ -59,7 +58,6 @@ p:last-child {
   margin-bottom: 0;
 }
 
-/* 英語の小さなタグ（デザインのアクセント） */
 .section-tag {
   display: block;
   font-size: 12px;
@@ -76,23 +74,21 @@ p:last-child {
   margin-bottom: 40px;
 }
 
-/* ===== ヘッダー（すりガラス風のおしゃれなデザイン） ===== */
+/* ===== ヘッダー ===== */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 70px;
-  background-color: rgba(250, 249, 246, 0.85); /* 半透明にして下のコンテンツを薄く透かす */
+  background-color: rgba(250, 249, 246, 0.85);
   background-image: radial-gradient(circle at 10% 20%, rgba(26,60,64,0.05), transparent 30%),
                     radial-gradient(circle at 90% 80%, rgba(29,45,80,0.03), transparent 30%);
   backdrop-filter: blur(12px);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-
   box-shadow: 0 2px 15px rgba(26,60,64,0.05);
   z-index: 3000;
 }
@@ -119,7 +115,6 @@ nav {
   width: 260px;
   height: 100vh;
   background: var(--color-base);
-
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -135,7 +130,7 @@ nav.show {
 
 nav a {
   text-decoration: none;
-  color: var(--color-text); /* 修正済み */
+  color: var(--color-text);
   font-size: 16px;
   font-weight: 600;
   padding: 12px 16px;
@@ -151,7 +146,7 @@ nav a:hover {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(29,45,80,0.3); /* 海の青を混ぜた上品な影に */
+  background: rgba(29,45,80,0.3);
   display: none;
   z-index: 2000;
   backdrop-filter: blur(2px);
@@ -165,10 +160,9 @@ nav a:hover {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 100px 24px;
+  padding: 90px 24px; /* 上下余白を適度にスマート化 */
 }
 
-/* 背景を少し変えてリズムをつける用 */
 .bg-tint {
   background-color: #f2f5f3;
   max-width: 100%;
@@ -179,54 +173,60 @@ nav a:hover {
   padding: 0 24px;
 }
 
-/* ===== 1. ヒーロー（最初の画面：美しいグラデーション） ===== */
+/* ===== 1. ヒーロー（スクロール不要で美しく収まる設計） ===== */
 .hero {
-  height: 90vh; /* 100vhから少し減らして下に続く雰囲気を持たせる */
+  min-height: 95vh; /* どんな画面幅でも綺麗に包み込む最小高 */
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  /* 杜の緑と海の青をグラデーションで表現 */
   background: linear-gradient(135deg, #e3ede4 0%, #e2e8f0 100%);
-  padding: 0 24px;
+  padding: 90px 24px 40px; /* 上部ヘッダー分の余白を確保 */
 }
 
 .hero-box {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  padding: 60px 40px;
+  padding: 40px 30px;
   border-radius: 24px;
-  box-shadow: 0 15px 40px rgba(26,60,64,0.06);
-  max-width: 640px;
+  box-shadow: 0 15px 40px rgba(26,60,64,0.05);
+  max-width: 720px;
   width: 100%;
-}
-
-.hero-sub {
-  font-size: 15px;
-  letter-spacing: 0.1em;
-  color: #55665c;
-  margin-bottom: 12px;
+  text-align: center;
 }
 
 .hero h1 {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   color: var(--color-main);
-  line-height: 1.4;
-  margin-bottom: 30px;
+  line-height: 1.5;
 }
 
-/* ===== 上品なボタン（CTA） ===== */
+/* キャッチコピーと概要の間の細い区切り線 */
+.hero-divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-accent);
+  margin: 20px auto;
+}
+
+.hero-lead {
+  font-size: 15px;
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+/* 上品なボタン */
 .btn {
   display: inline-block;
   text-decoration: none;
   font-weight: 600;
-  padding: 14px 36px;
-  border-radius: 50px; /* 丸みのあるプロっぽいボタン */
-  font-size: 15px;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 14px;
   transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(26,60,64,0.15);
+  box-shadow: 0 4px 15px rgba(26,60,64,0.12);
 }
 
 .btn-primary {
@@ -237,19 +237,10 @@ nav a:hover {
 .btn-primary:hover {
   background: #245257;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(26,60,64,0.25);
+  box-shadow: 0 6px 20px rgba(26,60,64,0.2);
 }
 
-/* ===== 2. コンセプト（テキストブロック） ===== */
-.text-block {
-  background: var(--color-card-bg);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(26,60,64,0.03);
-  border: 1px solid rgba(26,60,64,0.05);
-}
-
-/* ===== 3. 循環する養殖（グリッド & カード & 横スクロール） ===== */
+/* ===== 2. 循環する養殖（グリッド & カード & 横スクロール） ===== */
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -261,10 +252,9 @@ nav a:hover {
   padding: 35px 25px;
   border-radius: 18px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.03);
-  border-top: 4px solid var(--color-main); /* 上側に深い緑のアクセント線 */
+  border-top: 4px solid var(--color-main);
   position: relative;
   transition: transform 0.3s;
-  
   display: flex;
   flex-direction: column;
 }
@@ -273,33 +263,30 @@ nav a:hover {
   transform: translateY(-5px);
 }
 
-/* ステップ数（01, 02..）の数字用スタイリング */
 .card-num {
   font-family: 'Noto Serif JP', serif;
   font-size: 32px;
   font-weight: 700;
-  color: var(--color-accent); /* ベージュ色で上品に数字を目立たせる */
+  color: var(--color-accent);
   margin-bottom: 14px;
   line-height: 1;
 }
 
 .card p {
-  flex-grow: 1; /* 文章の長さに合わせて自動で伸び縮み */
+  flex-grow: 1;
   margin-bottom: 24px;
 }
 
-/* カード内の横スクロール画像ギャラリー設定 */
 .image-slider {
   display: flex;
   gap: 12px;
-  overflow-x: auto; /* 横方向にはみ出た要素をスクロール可能に */
-  scroll-snap-type: x mandatory; /* スクロールした時にピタッと止まる設定 */
-  -webkit-overflow-scrolling: touch; /* スマホでのスクロールを滑らかにする */
-  padding-bottom: 10px; /* スクロールバー用の余白 */
-  margin: 0 -5px; /* 微調整 */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
+  margin: 0 -5px;
 }
 
-/* スクロールバーのデザインをシンプルでお洒落に */
 .image-slider::-webkit-scrollbar {
   height: 5px;
 }
@@ -312,24 +299,21 @@ nav a:hover {
   border-radius: 10px;
 }
 
-/* スライドされる1枚1枚の画像ブロック */
 .slide-item {
-  flex: 0 0 85%; /* カード幅に対して85%のサイズで写真を表示（チラ見え効果） */
-  scroll-snap-align: start; /* スナップの基準を左端に */
+  flex: 0 0 85%;
+  scroll-snap-align: start;
   position: relative;
 }
 
-/* 写真のスタイリング */
 .slide-item img {
   width: 100%;
-  height: 140px; /* 写真の高さを統一 */
-  object-fit: cover; /* 縦横比を崩さずにトリミング */
+  height: 140px;
+  object-fit: cover;
   border-radius: 10px;
-  background-color: #e2e8f0; /* 写真がない時のグレーの代入色 */
+  background-color: #e2e8f0;
   display: block;
 }
 
-/* 写真の下につける小さなキャプション（説明文字） */
 .slide-item span {
   display: block;
   font-size: 11px;
@@ -338,7 +322,60 @@ nav a:hover {
   text-align: center;
 }
 
-/* ===== 4. お問い合わせ（2列並びボタン） ===== */
+/* ===== 3. 会社概要（PC・スマホ共通区切り線） ===== */
+.company-table-wrapper {
+  background: var(--color-card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(26,60,64,0.03);
+  border: 1px solid rgba(26,60,64,0.05);
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.company-table tr {
+  border-bottom: 1px solid #dcdcdc; /* いつでも表示される綺麗な区切り線 */
+}
+
+.company-table tr:last-child {
+  border-bottom: none;
+}
+
+.company-table th, 
+.company-table td {
+  padding: 20px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.company-table th {
+  width: 25%;
+  font-family: 'Noto Serif JP', serif;
+  color: var(--color-main);
+  font-weight: 700;
+}
+
+.company-table td {
+  color: var(--color-text);
+}
+
+.company-table td ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.company-table td ul li {
+  margin-bottom: 8px;
+}
+.company-table td ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== 4. お問い合わせ ===== */
 .contact-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -389,7 +426,7 @@ nav a:hover {
 
 /* ===== フッター ===== */
 footer {
-  background: var(--color-sub); /* 海の深みを感じるディープブルー */
+  background: var(--color-sub);
   padding: 60px 24px;
   text-align: center;
   color: rgba(250, 249, 246, 0.6);
@@ -409,103 +446,49 @@ footer {
 
 /* ===== 📱 スマホ・タブレット用レスポンシブ調整 ===== */
 @media (max-width: 768px) {
-  /* グリッドを縦1列にする */
   .grid-layout, .contact-box {
     grid-template-columns: 1fr;
   }
   
-  .hero h1 {
-    font-size: 28px;
+  /* スマホでのみ改行を有効にするための設定 */
+  .sp-only {
+    display: block;
   }
   
+  .hero {
+    min-height: 100vh; /* スマホでは画面いっぱいに広げてすっぽり収める */
+  }
+
   .hero-box {
-    padding: 40px 20px;
+    padding: 30px 16px;
+  }
+
+  .hero h1 {
+    font-size: 23px; /* スマホでも1画面に必ず収まるサイズに調整 */
+  }
+
+  .hero-lead {
+    font-size: 13.5px;
+    text-align: left; /* 長めの概要はスマホだと左揃えが見やすい */
+    line-height: 1.7;
   }
   
   .container {
-    padding: 70px 20px;
+    padding: 60px 20px;
   }
-}
 
-/* 大画面（PC等）での追加微調整 */
-@media (min-width: 769px) {
-  .slide-item {
-    flex: 0 0 90%;
-  }
-  .slide-item img {
-    height: 160px;
-  }
-}
-/* ===== 会社概要（テーブル）の設定 ===== */
-/* ===== 会社概要（テーブル）の設定：PC・スマホ共通 ===== */
-.company-table-wrapper {
-  background: var(--color-card-bg);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(26,60,64,0.03);
-  border: 1px solid rgba(26,60,64,0.05);
-}
-
-.company-table {
-  width: 100%;
-  border-collapse: collapse; /* 線の重なりを防ぐ */
-  font-size: 15px;
-}
-
-/* ⭕ PC・スマホ共通で、すべてに行の下側にしっかり区切り線を引く */
-.company-table tr {
-  border-bottom: 1px solid #dcdcdc; /* 参考画像に近い、ハッキリ見える上品なグレー */
-}
-
-.company-table tr:last-child {
-  border-bottom: none; /* 一番最後の行の下線だけは消してスッキリさせる */
-}
-
-.company-table th, 
-.company-table td {
-  padding: 20px 10px;
-  text-align: left;
-  vertical-align: top; /* 文字が複数行になっても上揃えにする */
-}
-
-.company-table th {
-  width: 25%; /* PCでの左側の見出しの幅 */
-  font-family: 'Noto Serif JP', serif;
-  color: var(--color-main);
-  font-weight: 700;
-}
-
-.company-table td {
-  color: var(--color-text);
-}
-
-/* 事業内容の箇条書き（ul）を綺麗に整える */
-.company-table td ul {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.company-table td ul li {
-  margin-bottom: 8px;
-}
-.company-table td ul li:last-child {
-  margin-bottom: 0;
-}
-
-/* 📱 スマホ用レスポンシブ：参考画像（image_2.png）のように横並びをキープする */
-@media (max-width: 768px) {
+  /* 会社概要：スマホでも綺麗に横並びをキープ */
   .company-table-wrapper {
-    padding: 20px 10px; /* 左右の余白を少し狭くして画面を広く使う */
+    padding: 20px 10px;
     background: #ffffff;
     box-shadow: none;
     border: none;
   }
   
   .company-table tr {
-    display: flex; /* 左右の横並び（Flexbox）にする */
+    display: flex;
     align-items: flex-start;
     padding: 16px 0;
-    /* 共通設定で線を引いているので、ここでは border-bottom を書かなくてOK */
   }
   
   .company-table th, 
@@ -515,10 +498,10 @@ footer {
   }
   
   .company-table th {
-    width: 90px; /* 左側の見出しの幅を固定 */
+    width: 90px;
     min-width: 90px;
     flex-shrink: 0;
-    color: #0055aa; /* 参考画像のような青系 */
+    color: #0055aa;
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -527,8 +510,21 @@ footer {
   .company-table td {
     width: auto;
     flex-grow: 1;
-    padding-left: 15px; /* 見出しと内容の間のすき間 */
+    padding-left: 15px;
     font-size: 14px;
     line-height: 1.6;
+  }
+}
+
+/* スマホ以外（PC）ではスマホ用改行タグを無視する */
+@media (min-width: 769px) {
+  .sp-only {
+    display: none;
+  }
+  .slide-item {
+    flex: 0 0 90%;
+  }
+  .slide-item img {
+    height: 160px;
   }
 }
