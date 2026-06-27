@@ -492,50 +492,40 @@ footer {
   }
 }
 
-/* ===== 1. ヒーロー（高さをさらに3分の2に縮小 ＆ 色を濃く鮮やかに調整） ===== */
-.hero {
-  min-height: 28vh !important; /* ⭕ PC大画面でも無駄に広がらないサイズに */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* ⭕ グラデーションの色合いを一段と濃く、鮮やかなプロ仕様にリッチ化 */
-  background: linear-gradient(
-    135deg, 
-    #a2caa6 0%,    /* 👈 左上：より瑞々しく、新緑の深みを感じる杜の緑 */
-    #dec6a4 50%,   /* 👈 中央：貝殻や温かい砂浜がハッキリ伝わるゴールドベージュ */
-    #9cbcd4 100%   /* 👈 右下：瀬戸内の深く澄んだ海をイメージしたブルー */
-  );
-  
-  padding: 100px 24px 30px !important; /* 上下の余白を極限まで引き締め */
-}
+/* ==========================================
+   最下部に貼り付けて、自分で数値を調整するブロック
+   ========================================== */
 
-.hero h1 {
-  font-size: 32px !important;
-  color: var(--color-main) !important;
-  /* ⭕ 色を濃くした背景でも、文字の輪郭がピシッと美しく浮き出るように白文字シャドウを強化 */
-  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.7), 0 1px 2px rgba(255, 255, 255, 0.5) !important;
-}
-
-/* ===== 📱 スマホ用レスポンシブ（250pxの3分の2、約170pxに潰す） ===== */
 @media (max-width: 768px) {
+  
+  /* 1. ここがグラデーションのエリア本体です */
   .hero {
-    /* ⭕ スマホでの縦幅を250pxの「約3分の2（170px）」にバッサリ潰しました！ */
-    min-height: 170px !important;
-    height: 170px !important;
-    padding: 85px 20px 15px !important; /* スマホのヘッダー直下ギリギリまで文字を上に詰める */
+    /* 👇 【高さ】これ以上縮まない線を「130px」まで限界突破させました。もっと縮めたければ 110px などに。 */
+    min-height: 130px !important;
+    height: 130px !important;
+    
+    /* 👇 【余白】上の隙間を 65px まで詰めました。ヘッダー（ロゴ）にぶつからない限界まで文字が上に上がります。 */
+    padding-top: 65px !important;
+    padding-bottom: 5px !important;
+    
+    /* 👇 【色】元のパステル調を捨てて、原色に近い「濃い原液」のような色に変えました */
+    background: linear-gradient(
+      135deg, 
+      #55a86a 0%,    /* 🌲 左上：ハッキリした深い「森の緑」 */
+      #cca366 50%,   /* 🏖️ 中央：濃い「砂浜のゴールドベージュ」 */
+      #4682b4 100%   /* 🌊 右下：鮮やかな「海の青」 */
+    ) !important;
   }
 
+  /* 2. ここが中の文字の設定です */
   .hero h1 {
-    font-size: 19px !important; /* 狭い画面でも綺麗に2行が収まるベストサイズ */
-    line-height: 1.5 !important;
-    letter-spacing: 0.06em !important;
+    font-size: 18px !important; /* 文字が枠からはみ出さないように少しだけ小ぶりに */
+    line-height: 1.4 !important;
   }
   
-  /* 次のセクション（循環する養殖事業）との間の隙間もさらに詰めました */
+  /* 3. 次のセクション（循環する養殖）の頭の余白です */
   #service {
-    padding-top: 30px !important; 
+    /* 👇 ここの数値を「0」に近づけるほど、下のカードたちが上にズンズン上がってきます */
+    padding-top: 20px !important; 
   }
 }
-
-  
