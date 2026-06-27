@@ -15,19 +15,23 @@ overlay.addEventListener("click", toggleMenu);
 // メニューリンククリック時
 document.querySelectorAll("nav a").forEach(link => {
   link.addEventListener("click", (e) => {
-    e.preventDefault(); // #移動を無効化
+    e.preventDefault(); 
 
     const targetId = link.getAttribute("href");
     const target = document.querySelector(targetId);
 
     if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+      // ヘッダーの高さ(70px)を考慮してスクロール位置を計算
+      const headerHeight = 70;
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
       });
     }
 
-    // URLから #を消す（プロっぽい挙動）
+    // URLから #を消す
     history.replaceState(null, "", location.pathname);
 
     // メニュー閉じる
