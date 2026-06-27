@@ -2,6 +2,10 @@ body {
   margin: 0;
   font-family: 'Noto Sans JP', sans-serif;
   background: #f7faf7;
+
+  /* スマホの引っ張り対策 */
+  height: 100%;
+  overflow-x: hidden;
 }
 
 /* ===== ヘッダー ===== */
@@ -76,15 +80,20 @@ section {
   max-width: 900px;
   margin: 0 auto;
   padding: 100px 20px;
+
+  /* ここ重要：ヘッダー被り防止 */
   scroll-margin-top: 80px;
 }
 
+/* HOMEだけ余白追加（被り対策） */
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #dfeee0;
+
+  padding-top: 80px;
 }
 
 .hero-box {
