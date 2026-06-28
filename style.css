@@ -153,11 +153,19 @@ nav a:hover {
   display: block;
 }
 
-/* ===== セクション汎用レイアウト（元の1000px制限に戻す） ===== */
+/* ===== セクション汎用レイアウト ===== */
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 80px 24px;
+}
+
+/* ⭕ 【復活】事業内容セクションに、元の薄いブルーグレーの背景と角丸を再設定 */
+#service {
+  background-color: #F4F7F6;
+  border-radius: 24px;
+  padding: 60px 30px;
+  margin: 20px auto;
 }
 
 /* ===== 1. ヒーロー（オーバル・ライトブレンド仕様） ===== */
@@ -409,6 +417,12 @@ footer {
     padding: 50px 20px;
   }
 
+  /* スマホの時の事業内容の微調整 */
+  #service {
+    padding: 40px 20px;
+    margin: 10px auto;
+  }
+
   .hero {
     min-height: 210px;
     height: 210px;
@@ -425,10 +439,6 @@ footer {
     font-size: 19px;
     line-height: 1.6;
     letter-spacing: 0.08em;
-  }
-  
-  #service {
-    padding-top: 35px; 
   }
 
   .company-table-wrapper {
