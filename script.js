@@ -1,4 +1,4 @@
-const menuBtn = document.getElementById("menuBtn");
+const menuBtn = document.getElementById("menuBtn"); // 💡 Const から const に修正
 const nav = document.getElementById("nav");
 const overlay = document.getElementById("overlay");
 
@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
 
-// ===== PC版：画像スライダーの上でホイールを回したら1枚ずつピタッと切り替える機能（完全版） =====
+// ===== PC版：画像スライダーの上でホイールを回したら1枚ずつピタッと切り替える機能（事業内容などの自作用） =====
 const sliders = document.querySelectorAll('.js-slider');
 
 sliders.forEach((slider) => {
@@ -56,15 +56,12 @@ sliders.forEach((slider) => {
 
     if (isScrolling) return;
 
-    // 💡 Beholdの要素、または普通の子要素から最初の「カード1枚」を自動で探す
-    const slideItem = slider.querySelector('behold-widget a') || 
-                      slider.querySelector('behold-widget div') || 
-                      (slider.firstElementChild ? slider.firstElementChild.children[0] : null);
-                      
+    // 💡 インスタ用の記述を削除し、純粋な子要素（カード1枚）を探すシンプルなロジックに戻しました
+    const slideItem = slider.firstElementChild ? slider.firstElementChild.children[0] : null;
     if (!slideItem) return;
     
     // スライダーの隙間（gap）の数値をCSSから自動で取得（なければ16pxをデフォルトに）
-    const style = window.getComputedStyle(slider.querySelector('behold-widget') || slider);
+    const style = window.getComputedStyle(slider);
     const gap = parseInt(style.gap) || 16;
 
     // 1回分の正確な移動量を計算（カードの横幅 ＋ 隙間）
@@ -72,18 +69,15 @@ sliders.forEach((slider) => {
 
     isScrolling = true;
 
-    // 💡 実際にスクロールさせる対象（Beholdの内部か、slider自体か）を自動判定
-    const targetScroll = slider.querySelector('behold-widget') || slider;
-
     if (e.deltaY > 0) {
       // 下ホイール（右へ1枚進む）
-      targetScroll.scrollBy({
+      slider.scrollBy({
         left: moveAmount,
         behavior: 'smooth'
       });
     } else {
       // 上ホイール（左へ1枚戻る）
-      targetScroll.scrollBy({
+      slider.scrollBy({
         left: -moveAmount,
         behavior: 'smooth'
       });
