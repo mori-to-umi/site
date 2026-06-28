@@ -1,16 +1,16 @@
 /* ===== 共通変数と基本設定 ===== */
 :root {
-  --color-base: #FAF9F6;      /* 温かみのあるオフホワイト */
+  --color-base: #FAF9F6;      /* 温かみのあるオフホワイト（砂浜ベージュ） */
   --color-main: #1A3C40;      /* 杜の深緑（ブランドカラー） */
   --color-sub: #1D2D50;       /* 深い海の青（フッターなど） */
   --color-accent: #D4A373;    /* 貝や砂浜のベージュ（アクセント） */
   --color-text: #2C3E35;      /* 読みやすい濃い緑黒 */
   --color-card-bg: #FFFFFF;
   
-  /* セクションごとの背景色（3つすべて別々の色に設定） */
+  /* セクションごとの背景色（横いっぱいに広がる色） */
   --bg-service: #F4F7F6;      /* 【事業内容】爽やかな薄いブルーグレー */
   --bg-company: #EEF3F0;      /* 【会社概要】杜（森）をイメージした、ごく薄いグリーン */
-  --bg-contact: #FFFFFF;      /* 【お問い合わせ】シンプルに白にしてメリハリをつける */
+  --bg-contact: var(--color-base); /* 【お問い合わせ】ベースのベージュに統一 */
 }
 
 * {
@@ -160,7 +160,7 @@ nav a:hover {
 
 /* ===== セクション汎用設定と個別背景色 ===== */
 .container {
-  max-width: 100%; /* 横幅いっぱいに背景色を敷くため変更 */
+  width: 100%; 
   padding: 80px 0;
 }
 
@@ -170,26 +170,16 @@ nav a:hover {
   padding: 0 24px;
 }
 
-/* 3セクションすべて違う背景色を適用 */
 #service {
   background-color: var(--bg-service);
 }
 
 #company {
   background-color: var(--bg-company);
-  /* 内側のコンテンツ幅を綺麗に整える */
-  padding-left: 24px;
-  padding-right: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 #contact {
   background-color: var(--bg-contact);
-  padding-left: 24px;
-  padding-right: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 /* ===== 1. ヒーロー（オーバル・ライトブレンド仕様） ===== */
@@ -368,6 +358,7 @@ nav a:hover {
   gap: 20px;
 }
 
+/* ボタン自体は元の綺麗な「白背景」に固定 */
 .contact-button {
   display: flex;
   align-items: center;
@@ -375,23 +366,10 @@ nav a:hover {
   text-decoration: none;
   padding: 24px;
   border-radius: 16px;
-  background: var(--color-card-bg);
+  background: var(--color-card-bg) !important; /* 白背景を強制維持 */
   box-shadow: 0 8px 25px rgba(26,60,64,0.04);
   transition: all 0.3s;
   border: 1px solid rgba(26,60,64,0.05);
-}
-
-/* 電話番号ボタンの赤色を排除し、杜の緑テーマカラーを最優先で適用 */
-.contact-button.tel,
-a[href^="tel:"].contact-button {
-  background-color: var(--color-main); /* 杜の深緑へ変更（赤を抹殺） */
-}
-
-.contact-button.tel .text,
-.contact-button.tel .text strong,
-a[href^="tel:"].contact-button .text,
-a[href^="tel:"].contact-button .text strong {
-  color: #ffffff; /* 深緑背景で見えやすくなるよう文字を白へ */
 }
 
 .contact-button:hover {
@@ -399,35 +377,34 @@ a[href^="tel:"].contact-button .text strong {
   box-shadow: 0 12px 30px rgba(26,60,64,0.08);
 }
 
+/* 丸いアイコン枠の設定 */
 .contact-button .icon {
   font-size: 28px;
-  background: #f0f4f2;
+  background: #f0f4f2; /* 薄いグリーングレー */
   width: 54px;
   height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  color: var(--color-main) !important; /* PCのバグによる赤化を防ぎ、杜の緑に固定 */
 }
 
-.contact-button.tel .icon {
-  background: rgba(255, 255, 255, 0.2); /* 電話側は白系の半透明で馴染ませる */
-}
-
+/* PCの自動電話リンク機能による文字の赤色化をガチッと防御 */
 .contact-button .text {
   font-size: 14px;
-  color: var(--color-text);
+  color: var(--color-text) !important;
   line-height: 1.5;
 }
 
 .contact-button .text strong {
   font-size: 18px;
-  color: var(--color-main);
+  color: var(--color-main) !important; /* 電話番号の文字も深緑に固定 */
   display: block;
   margin-top: 2px;
 }
 
-/* ===== フッター ===== */
+/* フッター */
 footer {
   background: var(--color-sub);
   padding: 60px 24px;
@@ -447,7 +424,7 @@ footer {
   font-size: 13px;
 }
 
-/* ===== 📱 スマホ用レスポンス完全ガード（画面幅768px以下） ===== */
+/* ===== 📱 スマホ用レスポンスガード ===== */
 @media (max-width: 768px) {
   .grid-layout, .contact-box {
     grid-template-columns: 1fr;
@@ -456,14 +433,7 @@ footer {
   .container {
     padding: 50px 0;
   }
-  
-  /* スマホ版もセクション左右のゆとりを保持 */
-  #company, #contact {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 
-  /* スマホのオーバルグラデーションをふっくら高さに調整 */
   .hero {
     min-height: 210px;
     height: 210px;
@@ -486,7 +456,6 @@ footer {
     padding-top: 35px; 
   }
 
-  /* 会社概要：スマホ時も横並びの関係を固定 */
   .company-table-wrapper {
     padding: 20px 10px;
     background: #ffffff;
@@ -510,7 +479,7 @@ footer {
     width: 90px;
     min-width: 90px;
     flex-shrink: 0;
-    color: #0055aa; /* 綺麗な青系に */
+    color: var(--color-main); 
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -532,3 +501,4 @@ footer {
     height: 140px;
   }
 }
+
