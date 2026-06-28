@@ -515,8 +515,9 @@ html {
     border-bottom-color: var(--color-accent);
 }
 
+
 /* ==================================================
-   📝 成長記録 スタイル設定（シンプルグリッド・テキスト表示対応版）
+   📝 成長記録 スタイル設定（Behold完全攻略版）
    ================================================== */
 
 .diary-intro {
@@ -530,49 +531,61 @@ html {
     width: 100%;
 }
 
-/* 💡 Beholdが生成するカードの枠を、文章が入る縦長サイズに強制固定する */
+/* 💡 カードの枠組みを強制的に縦長にする */
+.instagram-simple-area behold-widget,
+.instagram-simple-area behold-widget *,
+.instagram-simple-area [class*="post"],
+.instagram-simple-area figure,
+.instagram-simple-area a {
+    box-sizing: border-box !important;
+}
+
+/* 投稿1つ1つの枠を白カード風にして、高さを確保 */
 .instagram-simple-area behold-widget a,
-.instagram-simple-area behold-widget [class*="post"],
-.instagram-simple-area behold-widget figure {
+.instagram-simple-area behold-widget [class*="post"] {
     background-color: #ffffff !important;
     border: 1px solid #dbdbdb !important;
     border-radius: 8px !important;
     padding: 12px !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
-    box-sizing: border-box !important;
-    
-    /* 縦長にして中身（画像と文章）を縦に並べる */
     display: flex !important;
     flex-direction: column !important;
-    height: 100% !important;
-    min-height: 400px !important; /* カードの最低の縦幅を確保 */
+    height: auto !important;
+    min-height: 420px !important; /* カード全体の高さをしっかり確保 */
+    text-decoration: none !important;
 }
 
-/* 画像が上側に綺麗に収まるように設定 */
+/* 画像のサイズ制限 */
 .instagram-simple-area behold-widget img {
     width: 100% !important;
-    height: auto !important;
-    max-height: 250px !important; /* 画像が大きくなりすぎないように制限 */
-    border-radius: 4px !important;
+    height: 240px !important; /* 画像の縦幅を固定 */
     object-fit: cover !important;
+    border-radius: 4px !important;
     margin-bottom: 12px !important;
+    flex-shrink: 0 !important;
 }
 
-/* 💡 隠れているテキストエリアを見えるように引っ張り出す */
+/* 💡 【超強力】Behold内のすべての隠れた文字・テキスト領域を強制表示 */
 .instagram-simple-area behold-widget [class*="caption"],
+.instagram-simple-area behold-widget [class*="text"],
+.instagram-simple-area behold-widget figcaption,
 .instagram-simple-area behold-widget p,
-.instagram-simple-area behold-widget span {
+.instagram-simple-area behold-widget span,
+.instagram-simple-area behold-widget div:not(:has(img)) {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     color: #333333 !important;
     font-size: 14px !important;
-    line-height: 1.5 !important;
+    line-height: 1.6 !important;
+    text-align: left !important;
+    
+    /* 3〜4行だけ表示して、長すぎる分は「...」にする設定 */
     overflow: hidden !important;
-    text-overflow: ellipsis !important;
     display: -webkit-box !important;
-    -webkit-line-clamp: 4 !important; /* 文章が長すぎる場合は4行で省略 */
+    -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical !important;
+    white-space: normal !important;
 }
 
 /* 過去ログボタン */
@@ -595,3 +608,4 @@ html {
     background-color: var(--color-main);
     color: #ffffff;
 }
+
