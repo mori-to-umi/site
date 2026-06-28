@@ -496,3 +496,103 @@ footer {
   background-color: #EEF3F0;
   width: 100%;
 }
+/* --- ここから追加：お知らせとミニ日記のスタイル --- */
+
+/* スクロールをなめらかにする設定 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* お知らせのリンクとNEWバッジ */
+.news-item {
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+.news-date {
+    color: #777;
+    font-weight: bold;
+    margin-right: 15px;
+    min-width: 90px;
+}
+.badge-new {
+    background-color: #ff3b30;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.news-link {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #999;
+}
+.news-link:hover {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+/* ミニ日記のタイムライン */
+.diary-intro {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 25px;
+}
+.diary-timeline {
+    border-left: 2px solid #eee;
+    padding-left: 20px;
+    margin-left: 10px;
+    margin-bottom: 25px;
+}
+.diary-item {
+    margin-bottom: 25px;
+    position: relative;
+}
+.diary-item::before {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: #007bff;
+    border-radius: 50%;
+}
+.diary-date {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #888;
+    display: block;
+    margin-bottom: 6px;
+}
+.diary-text {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 過去ログへ飛ぶボタン */
+.btn-archive-container {
+    text-align: right;
+}
+.btn-archive {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #555;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.btn-archive:hover {
+    background-color: #e0e0e0;
+    color: #222;
+}
