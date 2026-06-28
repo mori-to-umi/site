@@ -517,26 +517,54 @@ html {
     border-bottom-color: var(--color-accent);
 }
 
-/* 📝 成長記録セクション */
+/* ==================================================
+   📝 成長記録 スタイル設定（自前横スクロール版）
+   ================================================== */
+
 .diary-intro {
     font-size: 15px;
     color: #55665c;
     margin-bottom: 25px;
 }
 
-/* 📌 投稿ごとの枠（謎の青い線・丸を完全削除しました） */
+/* 💡 カードを横一列に並べてスクロールさせる親枠 */
+.diary-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 15px;
+    margin: 0 -5px;
+}
+
+/* スクロールバーをおしゃれに（事業内容と統一） */
+.diary-slider::-webkit-scrollbar {
+    height: 5px;
+}
+.diary-slider::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+}
+.diary-slider::-webkit-scrollbar-thumb {
+    background: rgba(212, 163, 115, 0.4);
+    border-radius: 10px;
+}
+
+/* 📌 投稿ごとの枠（横幅を固定して、1枚ずつめくれるようにする） */
 .diary-item {
-    margin-bottom: 25px;
+    flex: 0 0 320px; /* 👈 PC版でのカード1枚の横幅 */
+    scroll-snap-align: start;
     background-color: var(--color-card-bg);
     border: 1px solid rgba(26,60,64,0.08);   
-    border-top: 3px solid var(--color-accent); /* 砂浜ベージュの細い頭線でカード感を演出 */
+    border-top: 3px solid var(--color-accent); /* 砂浜ベージュの頭線 */
     border-radius: 14px;                       
     padding: 24px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.02);    
+    display: flex;
+    flex-direction: column;
 }
-.diary-item:last-child {
-    margin-bottom: 0;
-}
+
 .diary-date {
     font-size: 0.85rem;
     font-weight: bold;
@@ -544,21 +572,23 @@ html {
     display: block;
     margin-bottom: 8px;
 }
+
 .diary-text {
     font-size: 0.95rem;
     color: var(--color-text);
     line-height: 1.7;
     margin: 0 0 15px 0;
+    flex-grow: 1; /* テキストの長さが違っても画像の位置が揃うように調整 */
 }
 
-/* 🖼️ 成長記録の写真サイズ制限設定（でかくなるのを防ぐ） */
+/* 🖼️ 写真サイズ設定（枠いっぱいに綺麗に収める） */
 .diary-img-box {
-    max-width: 300px; /* 👈 写真の最大横幅を300pxに制限（お好みで変更可能） */
     width: 100%;
+    margin-top: auto; /* 常にカードの最下部に固定 */
 }
 .diary-img-box img {
     width: 100%;
-    height: auto;
+    height: 200px; /* 縦幅を揃えるときれいに見えます */
     border-radius: 8px;
     object-fit: cover;
     display: block;
@@ -583,4 +613,15 @@ html {
 .btn-archive:hover {
     background-color: var(--color-main);
     color: #ffffff;
+}
+
+/* 📱 スマホ用レスポンシブ */
+@media (max-width: 768px) {
+    .diary-item {
+        flex: 0 0 260px; /* スマホでは少し小さめにして、右側に次のカードをチラ見せさせる */
+        padding: 16px;
+    }
+    .diary-img-box img {
+        height: 160px; /* スマホ用に写真も少しコンパクトに */
+    }
 }
