@@ -486,21 +486,22 @@ footer {
 
 }
 
-/* --- ここから修正：お知らせとミニ日記のスタイル（枠線追加＆列ズレ修正） --- */
+/* --- 修正版：お知らせとミニ日記のスタイル --- */
 
 /* スクロールをなめらかにする設定 */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 85px; 
 }
 
-/* 📢 お知らせセクション全体の枠 */
+/* 📢 NEWSの枠 */
 .news-list {
     list-style: none;
-    padding: 20px;            /* 枠の内側の余白 */
+    padding: 20px;
     margin: 0;
-    border: 1px solid #e0e0e0; /* 薄いグレーの枠線 */
-    border-radius: 8px;        /* 枠の角を少し丸くする */
-    background-color: #fff;    /* 枠の中の背景色 */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
 }
 .news-item {
     padding: 12px 0;
@@ -511,7 +512,7 @@ html {
     flex-wrap: wrap;
 }
 .news-item:last-child {
-    border-bottom: none; /* 一番下のお知らせは点線を消す */
+    border-bottom: none;
 }
 .news-date {
     color: #777;
@@ -538,48 +539,54 @@ html {
     border-bottom-color: #007bff;
 }
 
-/* 📝 ミニ日記セクション全体の枠（列のズレを修正） */
+/* 📝 成長記録セクション（全体の枠は無し、列を揃える） */
 #my-diary {
-    border: 1px solid #e0e0e0; /* お知らせと同じ薄いグレーの枠線 */
-    border-radius: 8px;        /* 角を丸く */
-    padding: 30px;             /* 他のセクションと余白を統一して列を揃える */
-    background-color: #fff;
-    box-sizing: border-box;    /* 横幅のズレを防止するお守り */
+    box-sizing: border-box;
 }
 .diary-intro {
     font-size: 0.9rem;
     color: #666;
     margin-bottom: 25px;
 }
+/* タイムラインの縦線（投稿の枠に合わせるため少し位置調整） */
 .diary-timeline {
     border-left: 2px solid #eee;
-    padding-left: 20px;
+    padding-left: 30px;
     margin-left: 10px;
     margin-bottom: 25px;
 }
+
+/* 📌 投稿ごとの枠線（ここをカード風の枠にしました） */
 .diary-item {
     margin-bottom: 25px;
     position: relative;
+    background-color: #fff;
+    border: 1px solid #e0e0e0; /* 投稿ごとの枠線 */
+    border-radius: 8px;        /* 角を少し丸く */
+    padding: 20px;             /* 枠内の余白 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* ほんの少しの影 */
 }
 .diary-item:last-child {
     margin-bottom: 0;
 }
+/* タイムラインの青いドットの位置を枠に合わせて調整 */
 .diary-item::before {
     content: '';
     position: absolute;
-    left: -27px;
-    top: 6px;
+    left: -37px;
+    top: 24px;
     width: 12px;
     height: 12px;
     background-color: #007bff;
     border-radius: 50%;
+    z-index: 1;
 }
 .diary-date {
     font-size: 0.85rem;
     font-weight: bold;
     color: #888;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 .diary-text {
     font-size: 0.95rem;
@@ -607,4 +614,3 @@ html {
     background-color: #e0e0e0;
     color: #222;
 }
-/* --- ここまで --- */
