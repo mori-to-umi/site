@@ -6,11 +6,6 @@
   --color-accent: #D4A373;    /* 貝や砂浜のベージュ（アクセント） */
   --color-text: #2C3E35;      /* 読みやすい濃い緑黒 */
   --color-card-bg: #FFFFFF;
-  
-  /* セクションごとの背景色（横いっぱいに広がる色） */
-  --bg-service: #F4F7F6;      /* 【事業内容】爽やかな薄いブルーグレー */
-  --bg-company: #EEF3F0;      /* 【会社概要】杜（森）をイメージした、ごく薄いグリーン */
-  --bg-contact: var(--color-base); /* 【お問い合わせ】ベースのベージュに統一 */
 }
 
 * {
@@ -158,29 +153,11 @@ nav a:hover {
   display: block;
 }
 
-/* ===== セクション汎用設定と個別背景色 ===== */
+/* ===== セクション汎用レイアウト（元の1000px制限に戻す） ===== */
 .container {
-  width: 100%;       /* 背景色は画面の横いっぱい100%に広げる */
-  padding: 80px 0;
-}
-
-/* ⭕ ここを追加・修正！ PC大画面でもすべての文字やカードを真ん中（1000px幅）にキュッと収めます */
-.container-inner,
-#company,
-#contact {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* 各セクションの背景色を指定（外側の container に対して色をつけます） */
-#service {
-  background-color: var(--bg-service);
-}
-
-/* 会社概要とお問い合わせは、背景をセクション全体に敷くために少し指定を調整 */
-main-container-wrapper {
-  display: block;
+  padding: 80px 24px;
 }
 
 /* ===== 1. ヒーロー（オーバル・ライトブレンド仕様） ===== */
@@ -299,7 +276,7 @@ main-container-wrapper {
   text-align: center;
 }
 
-/* ===== 3. 会社概要（PC・スマホ共通デザイン） ===== */
+/* ===== 3. 会社概要 ===== */
 .company-table-wrapper {
   background: var(--color-card-bg);
   padding: 40px;
@@ -366,7 +343,7 @@ main-container-wrapper {
   text-decoration: none;
   padding: 24px;
   border-radius: 16px;
-  background: var(--color-card-bg) !important; 
+  background: var(--color-card-bg);
   box-shadow: 0 8px 25px rgba(26,60,64,0.04);
   transition: all 0.3s;
   border: 1px solid rgba(26,60,64,0.05);
@@ -386,23 +363,23 @@ main-container-wrapper {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: var(--color-main) !important; 
+  color: var(--color-main); 
 }
 
 .contact-button .text {
   font-size: 14px;
-  color: var(--color-text) !important;
+  color: var(--color-text);
   line-height: 1.5;
 }
 
 .contact-button .text strong {
   font-size: 18px;
-  color: var(--color-main) !important; 
+  color: var(--color-main);
   display: block;
   margin-top: 2px;
 }
 
-/* フッター */
+/* ===== フッター ===== */
 footer {
   background: var(--color-sub);
   padding: 60px 24px;
@@ -429,15 +406,7 @@ footer {
   }
   
   .container {
-    padding: 50px 0;
-  }
-
-  /* スマホ時は個別に左右の余白（20px）を持たせる */
-  .container-inner,
-  #company,
-  #contact {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 50px 20px;
   }
 
   .hero {
@@ -507,9 +476,3 @@ footer {
     height: 140px;
   }
 }
-
-/* ⭕ 【超重要】HTMLの構造（外側のセクション）にそれぞれの背景色を100%幅で敷く指定 */
-#home { background: none; }
-section[id="service"] { background-color: var(--bg-service); }
-section[id="company"] { background-color: var(--bg-company); }
-section[id="contact"] { background-color: var(--bg-contact); }
