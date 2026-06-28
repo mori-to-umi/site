@@ -485,10 +485,12 @@ footer {
   .slide-item {
     flex: 0 0 85%;
   }
-
+  /* スマホ版のスライダー画像の高さをグッと伸ばす */
   .slide-item img {
-    height: 140px;
+    height: 220px;       /* 140pxから220pxに大幅にアップ！ */
+    object-fit: cover;   /* 縦横比が違う写真が混ざっても、崩れず綺麗に収めます */
   }
+
 }
 #company {
   background-color: #EEF3F0;
