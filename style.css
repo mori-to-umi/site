@@ -516,7 +516,7 @@ html {
 }
 
 /* ==================================================
-   📝 成長記録 スタイル設定（シンプル埋め込み版）
+   📝 成長記録 スタイル設定（シンプルグリッド・テキスト表示対応版）
    ================================================== */
 
 .diary-intro {
@@ -525,10 +525,54 @@ html {
     margin-bottom: 25px;
 }
 
-/* 💡 余計な横スクロール処理をすべて廃止。Beholdが自律的に並べるのを邪魔しない */
 .instagram-simple-area {
     margin-bottom: 35px;
     width: 100%;
+}
+
+/* 💡 Beholdが生成するカードの枠を、文章が入る縦長サイズに強制固定する */
+.instagram-simple-area behold-widget a,
+.instagram-simple-area behold-widget [class*="post"],
+.instagram-simple-area behold-widget figure {
+    background-color: #ffffff !important;
+    border: 1px solid #dbdbdb !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+    box-sizing: border-box !important;
+    
+    /* 縦長にして中身（画像と文章）を縦に並べる */
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 400px !important; /* カードの最低の縦幅を確保 */
+}
+
+/* 画像が上側に綺麗に収まるように設定 */
+.instagram-simple-area behold-widget img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 250px !important; /* 画像が大きくなりすぎないように制限 */
+    border-radius: 4px !important;
+    object-fit: cover !important;
+    margin-bottom: 12px !important;
+}
+
+/* 💡 隠れているテキストエリアを見えるように引っ張り出す */
+.instagram-simple-area behold-widget [class*="caption"],
+.instagram-simple-area behold-widget p,
+.instagram-simple-area behold-widget span {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #333333 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important; /* 文章が長すぎる場合は4行で省略 */
+    -webkit-box-orient: vertical !important;
 }
 
 /* 過去ログボタン */
