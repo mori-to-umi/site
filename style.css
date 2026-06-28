@@ -515,6 +515,9 @@ html {
     border-bottom-color: var(--color-accent);
 }
 
+/* ==================================================
+   📝 成長記録 スタイル設定（Behold強制横スクロール版）
+   ================================================== */
 
 .diary-intro {
     font-size: 15px;
@@ -522,70 +525,63 @@ html {
     margin-bottom: 25px;
 }
 
-.diary-slider {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 15px;
-    margin: 0 -5px;
+.instagram-embed-area {
+    margin-bottom: 25px;
+    overflow: hidden; /* はみ出し防止 */
 }
 
-.diary-slider::-webkit-scrollbar {
+/* 💡 Beholdが生成するシャドウドメインやdivを強制的に横並びスクロールにする */
+.instagram-embed-area behold-widget,
+.instagram-embed-area [class*="grid"],
+.instagram-embed-area > div {
+    display: flex !important;
+    gap: 16px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 15px !important;
+}
+
+/* スクロールバーの見た目を事業内容と統一 */
+.instagram-embed-area behold-widget::-webkit-scrollbar,
+.instagram-embed-area behold-widget *::-webkit-scrollbar {
     height: 5px;
 }
-.diary-slider::-webkit-scrollbar-track {
+.instagram-embed-area behold-widget::-webkit-scrollbar-track,
+.instagram-embed-area behold-widget *::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.03);
     border-radius: 10px;
 }
-.diary-slider::-webkit-scrollbar-thumb {
+.instagram-embed-area behold-widget::-webkit-scrollbar-thumb,
+.instagram-embed-area behold-widget *::-webkit-scrollbar-thumb {
     background: rgba(212, 163, 115, 0.4);
     border-radius: 10px;
 }
 
-.diary-item {
-    flex: 0 0 320px;
-    scroll-snap-align: start;
-    background-color: var(--color-card-bg);
-    border: 1px solid rgba(26,60,64,0.08);   
-    border-top: 3px solid var(--color-accent); 
-    border-radius: 14px;                       
-    padding: 24px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.02);    
-    display: flex;
-    flex-direction: column;
+/* インスタの各投稿要素（aタグやdiv）をカード風に仕立てる */
+.instagram-embed-area behold-widget a,
+.instagram-embed-area behold-widget [class*="post"],
+.instagram-embed-area behold-widget figure {
+    flex: 0 0 290px !important; /* カード1枚の横幅 */
+    scroll-snap-align: start !important;
+    background-color: var(--color-card-bg) !important;
+    border: 1px solid rgba(26,60,64,0.08) !important;
+    border-top: 3px solid var(--color-accent) !important; /* 頭にアクセント線 */
+    border-radius: 14px !important;
+    padding: 12px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.02) !important;
+    box-sizing: border-box !important;
 }
 
-.diary-date {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #7a8a7a;
-    display: block;
-    margin-bottom: 8px;
+/* 画像がカードからはみ出さないように調整 */
+.instagram-embed-area behold-widget img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    object-fit: cover !important;
 }
 
-.diary-text {
-    font-size: 0.95rem;
-    color: var(--color-text);
-    line-height: 1.7;
-    margin: 0 0 15px 0;
-    flex-grow: 1; 
-}
-
-.diary-img-box {
-    width: 100%;
-    margin-top: auto;
-}
-.diary-img-box img {
-    width: 100%;
-    height: 200px; 
-    border-radius: 8px;
-    object-fit: cover;
-    display: block;
-}
-
-/* 過去ログへ飛ぶボタン */
+/* 過去ログボタン */
 .btn-archive-container {
     text-align: right;
     margin-top: 20px;
@@ -606,13 +602,11 @@ html {
     color: #ffffff;
 }
 
-/* 📱 スマホ用レスポンシブ */
+/* 📱 スマホ用レスポンシブ（少し小さくして右をチラ見せ） */
 @media (max-width: 768px) {
-    .diary-item {
-        flex: 0 0 260px; 
-        padding: 16px;
-    }
-    .diary-img-box img {
-        height: 160px; 
+    .instagram-embed-area behold-widget a,
+    .instagram-embed-area behold-widget [class*="post"] {
+        flex: 0 0 230px !important;
     }
 }
+
