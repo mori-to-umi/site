@@ -164,7 +164,8 @@ section {
 
 /* 💚 事業内容の背景色だけを、左右の画面端までどこまでも広げる指定 */
 #service {
-  background-color: var(--bg-service);
+  background-color: #F4F7F6;
+  width: 100%;
 }
 
 /* 中のコンテンツは、バラバラにならず最大1000pxの幅で中央にピシッと揃える */
