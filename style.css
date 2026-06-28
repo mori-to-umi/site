@@ -175,12 +175,13 @@ section {
 }
 
 /* ===== 1. ヒーロー（キャッチコピー上下均等版） ===== */
+/* キャッチコピー（位置を少し下げて上下調整） */
 .hero {
   min-height: 45vh;           
   display: flex;
   align-items: center;        
   justify-content: center;    
-  padding: 100px 24px 60px;   /* 先ほど調整した、目視で上下均等になる黄金比 */
+  padding: 120px 24px 50px;   /* 上の余白を100px→120pxに広げて、少し下に下げました */
   background-color: #ffffff;
   background-image:
     radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 40%, transparent 80%),
@@ -189,6 +190,7 @@ section {
     radial-gradient(at 100% 90%, rgba(39, 76, 119, 0.25) 0px, transparent 65%),
     radial-gradient(at 0% 90%, rgba(96, 150, 186, 0.15) 0px, transparent 65%);
 }
+
 
 .hero-box {
   max-width: 800px;
