@@ -56,28 +56,34 @@ sliders.forEach((slider) => {
 
     if (isScrolling) return;
 
-    // 💡 修正ポイント：中に最初にある子要素（カード）を自動で取得する
-    const slideItem = slider.firstElementChild ? slider.firstElementChild.children[0] : null;
+    // 💡 Beholdの要素、または普通の子要素から最初の「カード1枚」を自動で探す
+    const slideItem = slider.querySelector('behold-widget a') || 
+                      slider.querySelector('behold-widget div') || 
+                      (slider.firstElementChild ? slider.firstElementChild.children[0] : null);
+                      
     if (!slideItem) return;
     
-    // スライダーの隙間（gap）の数値をCSSから自動で取得する（なければ12pxをデフォルトにする）
-    const style = window.getComputedStyle(slider);
-    const gap = parseInt(style.gap) || 12;
+    // スライダーの隙間（gap）の数値をCSSから自動で取得（なければ16pxをデフォルトに）
+    const style = window.getComputedStyle(slider.querySelector('behold-widget') || slider);
+    const gap = parseInt(style.gap) || 16;
 
     // 1回分の正確な移動量を計算（カードの横幅 ＋ 隙間）
     const moveAmount = slideItem.offsetWidth + gap; 
 
     isScrolling = true;
 
+    // 💡 実際にスクロールさせる対象（Beholdの内部か、slider自体か）を自動判定
+    const targetScroll = slider.querySelector('behold-widget') || slider;
+
     if (e.deltaY > 0) {
       // 下ホイール（右へ1枚進む）
-      slider.scrollBy({
+      targetScroll.scrollBy({
         left: moveAmount,
         behavior: 'smooth'
       });
     } else {
       // 上ホイール（左へ1枚戻る）
-      slider.scrollBy({
+      targetScroll.scrollBy({
         left: -moveAmount,
         behavior: 'smooth'
       });
