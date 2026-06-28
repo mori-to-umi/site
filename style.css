@@ -490,3 +490,7 @@ footer {
     height: 140px;
   }
 }
+#company {
+  background-color: #EBF1F5;
+  width: 100%;
+}
