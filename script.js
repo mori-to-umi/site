@@ -44,3 +44,17 @@ document.querySelectorAll("nav a").forEach(link => {
 window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
+
+// ===== PC版：画像スライダーの上でマウスホイールを回したら横スクロールさせる機能 =====
+const sliders = document.querySelectorAll('.js-slider');
+
+sliders.forEach((slider) => {
+  slider.addEventListener('wheel', (e) => {
+    // タッチパッドなどの誤作動を防ぐため、PCの通常スクロール（縦スクロールの動き）を横スクロールに変換
+    if (e.deltaY !== 0) {
+      e.preventDefault(); // 通常のブラウザの縦スクロールを止める
+      slider.scrollLeft += e.deltaY; // ホイールの回転量（上下）の分だけ、左右にスクロールさせる
+    }
+  }, { passive: false }); // preventDefaultを効かせるためのお守り
+});
+
