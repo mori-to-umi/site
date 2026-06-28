@@ -164,11 +164,11 @@ nav a:hover {
 
 /* ===== 1. ヒーロー（オーバル・ライトブレンド仕様） ===== */
 .hero {
-  min-height: 38vh;
+  min-height: 45vh;           /* 画面の縦幅に対して心地よい高さを確保 */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 110px;
+  align-items: center;        /* 上下中央揃え */
+  justify-content: center;    /* 左右中央揃え */
+  padding: 100px 24px 60px;   /* 上にヘッダー分の余白(100px)をとりつつ、上下の見た目のバランスを均等に */
   background-color: #ffffff;
   background-image:
     radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 40%, transparent 80%),
@@ -411,10 +411,10 @@ footer {
     padding: 50px 20px;
   }
 
-  .hero {
-    min-height: 210px;
-    height: 210px;
-    padding: 100px 20px 25px;
+   .hero {
+    min-height: 240px;          /* スマホである程度しっかり高さを出す */
+    height: auto;
+    padding: 90px 20px 40px;    /* 上のヘッダー分を考慮して、上下の目視バランスを均等化 */
     background-image:
       radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 35%, transparent 75%),
       radial-gradient(at 0% 20%, rgba(120, 165, 133, 0.35) 0px, transparent 65%),
@@ -422,6 +422,7 @@ footer {
       radial-gradient(at 100% 90%, rgba(39, 76, 119, 0.3) 0px, transparent 65%),
       radial-gradient(at 0% 90%, rgba(96, 150, 186, 0.25) 0px, transparent 65%);
   }
+
 
   .hero h1 {
     font-size: 19px;
