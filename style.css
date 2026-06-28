@@ -35,7 +35,7 @@ h2 {
   font-size: 28px;
   position: relative;
   padding-left: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 h2::before {
@@ -74,7 +74,7 @@ p:last-child {
 .section-lead {
   font-size: 16px;
   color: #55665c;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 /* ===== ヘッダー ===== */
@@ -156,8 +156,7 @@ nav a:hover {
   display: block;
 }
 
-/* ===== ⭕ 【修正】セクションと背景色の構造 ===== */
-/* セクション自体は画面の横100%いっぱいに広げる */
+/* ===== ⭕ 全体の隙間をキュッと引き締める設定 ===== */
 section {
   width: 100%;
 }
@@ -165,17 +164,16 @@ section {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 45px 24px; /* 👈 上下を80pxから45pxに狭めて間延びを解消 */
 }
 
 /* ===== 1. ヒーロー（キャッチコピー上下均等版） ===== */
-/* キャッチコピー（位置を少し下げて上下調整） */
 .hero {
   min-height: 45vh;           
   display: flex;
   align-items: center;        
   justify-content: center;    
-  padding: 120px 24px 50px;   /* 上の余白を100px→120pxに広げて、少し下に下げました */
+  padding: 120px 24px 50px;   
   background-color: #ffffff;
   background-image:
     radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 40%, transparent 80%),
@@ -184,7 +182,6 @@ section {
     radial-gradient(at 100% 90%, rgba(39, 76, 119, 0.25) 0px, transparent 65%),
     radial-gradient(at 0% 90%, rgba(96, 150, 186, 0.15) 0px, transparent 65%);
 }
-
 
 .hero-box {
   max-width: 800px;
@@ -204,7 +201,7 @@ section {
   text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
 }
 
-/* ===== 2. 循環する養殖（グリッド & カード & 横スクロール） ===== */
+/* ===== 2. 循環する養殖 ===== */
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -409,27 +406,20 @@ footer {
   font-size: 13px;
 }
 
-/* ===== 📱 スマホ用レスポンスガード ===== */
+/* ===== 📱 スマホ用レスポンシブ ===== */
 @media (max-width: 768px) {
   .grid-layout, .contact-box {
     grid-template-columns: 1fr;
   }
   
   .container {
-    padding: 50px 20px;
+    padding: 30px 20px; /* スマホ側の隙間も間延びしないように引き締め */
   }
 
-  /* スマホ版キャッチコピーの上下均等設定 */
   .hero {
     min-height: 240px;          
     height: auto;
     padding: 90px 20px 40px;    
-    background-image:
-      radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 35%, transparent 75%),
-      radial-gradient(at 0% 20%, rgba(120, 165, 133, 0.35) 0px, transparent 65%),
-      radial-gradient(at 100% 20%, rgba(143, 192, 169, 0.25) 0px, transparent 65%),
-      radial-gradient(at 100% 90%, rgba(39, 76, 119, 0.3) 0px, transparent 65%),
-      radial-gradient(at 0% 90%, rgba(96, 150, 186, 0.25) 0px, transparent 65%);
   }
 
   .hero h1 {
@@ -461,10 +451,6 @@ footer {
     width: 90px;
     min-width: 90px;
     flex-shrink: 0;
-    color: var(--color-main); 
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
   }
   
   .company-table td {
@@ -478,34 +464,34 @@ footer {
   .slide-item {
     flex: 0 0 85%;
   }
-  /* スマホ版のスライダー画像の高さをグッと伸ばす */
   .slide-item img {
-    height: 220px;       /* 140pxから220pxに大幅にアップ！ */
-    object-fit: cover;   /* 縦横比が違う写真が混ざっても、崩れず綺麗に収めます */
+    height: 220px;       
+    object-fit: cover;   
   }
-
 }
 
-/* --- 修正版：お知らせとミニ日記のスタイル --- */
+/* ==================================================
+   📢 NEWS と 📝 成長記録 スタイル設定（完全版）
+   ================================================== */
 
-/* スクロールをなめらかにする設定 */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 85px; 
+    scroll-padding-top: 90px; 
 }
 
 /* 📢 NEWSの枠 */
 .news-list {
     list-style: none;
-    padding: 20px;
+    padding: 24px;
     margin: 0;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #fff;
+    border: 1px solid rgba(26,60,64,0.1); 
+    border-radius: 14px;                   
+    background-color: var(--color-card-bg); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.01);
 }
 .news-item {
     padding: 12px 0;
-    border-bottom: 1px dashed #eee;
+    border-bottom: 1px dashed rgba(26,60,64,0.1);
     font-size: 0.95rem;
     display: flex;
     align-items: baseline;
@@ -515,102 +501,86 @@ html {
     border-bottom: none;
 }
 .news-date {
-    color: #777;
+    color: #7a8a7a;
     font-weight: bold;
     margin-right: 15px;
     min-width: 90px;
 }
-.badge-new {
-    background-color: #ff3b30;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-right: 10px;
-}
 .news-link {
-    color: #333;
+    color: var(--color-text);
     text-decoration: none;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid var(--color-accent); 
+    font-weight: 600;
 }
 .news-link:hover {
-    color: #007bff;
-    border-bottom-color: #007bff;
+    color: var(--color-main);
+    border-bottom-color: var(--color-main);
 }
 
-/* 📝 成長記録セクション（全体の枠は無し、列を揃える） */
-#my-diary {
-    box-sizing: border-box;
-}
+/* 📝 成長記録セクション */
 .diary-intro {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 25px;
-}
-/* タイムラインの縦線（投稿の枠に合わせるため少し位置調整） */
-.diary-timeline {
-    border-left: 2px solid #eee;
-    padding-left: 30px;
-    margin-left: 10px;
+    font-size: 15px;
+    color: #55665c;
     margin-bottom: 25px;
 }
 
-/* 📌 投稿ごとの枠線（ここをカード風の枠にしました） */
+/* 📌 投稿ごとの枠（謎の青い線・丸を完全削除しました） */
 .diary-item {
     margin-bottom: 25px;
-    position: relative;
-    background-color: #fff;
-    border: 1px solid #e0e0e0; /* 投稿ごとの枠線 */
-    border-radius: 8px;        /* 角を少し丸く */
-    padding: 20px;             /* 枠内の余白 */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* ほんの少しの影 */
+    background-color: var(--color-card-bg);
+    border: 1px solid rgba(26,60,64,0.08);   
+    border-top: 3px solid var(--color-accent); /* 砂浜ベージュの細い頭線でカード感を演出 */
+    border-radius: 14px;                       
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.02);    
 }
 .diary-item:last-child {
     margin-bottom: 0;
 }
-/* タイムラインの青いドットの位置を枠に合わせて調整 */
-.diary-item::before {
-    content: '';
-    position: absolute;
-    left: -37px;
-    top: 24px;
-    width: 12px;
-    height: 12px;
-    background-color: #007bff;
-    border-radius: 50%;
-    z-index: 1;
-}
 .diary-date {
     font-size: 0.85rem;
     font-weight: bold;
-    color: #888;
+    color: #7a8a7a;
     display: block;
     margin-bottom: 8px;
 }
 .diary-text {
     font-size: 0.95rem;
-    color: #444;
-    line-height: 1.6;
-    margin: 0;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin: 0 0 15px 0;
+}
+
+/* 🖼️ 成長記録の写真サイズ制限設定（でかくなるのを防ぐ） */
+.diary-img-box {
+    max-width: 300px; /* 👈 写真の最大横幅を300pxに制限（お好みで変更可能） */
+    width: 100%;
+}
+.diary-img-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
 }
 
 /* 過去ログへ飛ぶボタン */
 .btn-archive-container {
     text-align: right;
+    margin-top: 20px;
 }
 .btn-archive {
     display: inline-block;
-    background-color: #f0f0f0;
-    color: #555;
+    background-color: rgba(26,60,64,0.05);
+    color: var(--color-main);
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 8px;
     font-size: 0.9rem;
-    font-weight: bold;
-    transition: background 0.2s;
+    font-weight: 600;
+    transition: all 0.2s;
 }
 .btn-archive:hover {
-    background-color: #e0e0e0;
-    color: #222;
+    background-color: var(--color-main);
+    color: #ffffff;
 }
