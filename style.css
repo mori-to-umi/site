@@ -160,26 +160,27 @@ nav a:hover {
 
 /* ===== セクション汎用設定と個別背景色 ===== */
 .container {
-  width: 100%; 
+  width: 100%;       /* 背景色は画面の横いっぱい100%に広げる */
   padding: 80px 0;
 }
 
-.container-inner {
+/* ⭕ ここを追加・修正！ PC大画面でもすべての文字やカードを真ん中（1000px幅）にキュッと収めます */
+.container-inner,
+#company,
+#contact {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
+/* 各セクションの背景色を指定（外側の container に対して色をつけます） */
 #service {
   background-color: var(--bg-service);
 }
 
-#company {
-  background-color: var(--bg-company);
-}
-
-#contact {
-  background-color: var(--bg-contact);
+/* 会社概要とお問い合わせは、背景をセクション全体に敷くために少し指定を調整 */
+main-container-wrapper {
+  display: block;
 }
 
 /* ===== 1. ヒーロー（オーバル・ライトブレンド仕様） ===== */
@@ -358,7 +359,6 @@ nav a:hover {
   gap: 20px;
 }
 
-/* ボタン自体は元の綺麗な「白背景」に固定 */
 .contact-button {
   display: flex;
   align-items: center;
@@ -366,7 +366,7 @@ nav a:hover {
   text-decoration: none;
   padding: 24px;
   border-radius: 16px;
-  background: var(--color-card-bg) !important; /* 白背景を強制維持 */
+  background: var(--color-card-bg) !important; 
   box-shadow: 0 8px 25px rgba(26,60,64,0.04);
   transition: all 0.3s;
   border: 1px solid rgba(26,60,64,0.05);
@@ -377,20 +377,18 @@ nav a:hover {
   box-shadow: 0 12px 30px rgba(26,60,64,0.08);
 }
 
-/* 丸いアイコン枠の設定 */
 .contact-button .icon {
   font-size: 28px;
-  background: #f0f4f2; /* 薄いグリーングレー */
+  background: #f0f4f2; 
   width: 54px;
   height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: var(--color-main) !important; /* PCのバグによる赤化を防ぎ、杜の緑に固定 */
+  color: var(--color-main) !important; 
 }
 
-/* PCの自動電話リンク機能による文字の赤色化をガチッと防御 */
 .contact-button .text {
   font-size: 14px;
   color: var(--color-text) !important;
@@ -399,7 +397,7 @@ nav a:hover {
 
 .contact-button .text strong {
   font-size: 18px;
-  color: var(--color-main) !important; /* 電話番号の文字も深緑に固定 */
+  color: var(--color-main) !important; 
   display: block;
   margin-top: 2px;
 }
@@ -432,6 +430,14 @@ footer {
   
   .container {
     padding: 50px 0;
+  }
+
+  /* スマホ時は個別に左右の余白（20px）を持たせる */
+  .container-inner,
+  #company,
+  #contact {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .hero {
@@ -502,3 +508,8 @@ footer {
   }
 }
 
+/* ⭕ 【超重要】HTMLの構造（外側のセクション）にそれぞれの背景色を100%幅で敷く指定 */
+#home { background: none; }
+section[id="service"] { background-color: var(--bg-service); }
+section[id="company"] { background-color: var(--bg-company); }
+section[id="contact"] { background-color: var(--bg-contact); }
