@@ -6,6 +6,9 @@
   --color-accent: #D4A373;    /* 貝や砂浜のベージュ（アクセント） */
   --color-text: #2C3E35;      /* 読みやすい濃い緑黒 */
   --color-card-bg: #FFFFFF;
+  
+  /* ⭕ 【大元の色設定】事業内容の背景色（薄いグリーン/ブルーグレー） */
+  --bg-service: #F4F7F6;      
 }
 
 * {
@@ -153,22 +156,31 @@ nav a:hover {
   display: block;
 }
 
-/* ===== セクション汎用レイアウト ===== */
+/* ===== ⭕ 【修正】セクションと背景色の構造 ===== */
+/* セクション自体は画面の横100%いっぱいに広げる */
+section {
+  width: 100%;
+}
+
+/* 💚 事業内容の背景色だけを、左右の画面端までどこまでも広げる指定 */
+#service {
+  background-color: var(--bg-service);
+}
+
+/* 中のコンテンツは、バラバラにならず最大1000pxの幅で中央にピシッと揃える */
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 80px 24px;
 }
 
-/* ❌ 原因だった「#service」の変な囲い設定は完全に消去しました */
-
-/* ===== 1. ヒーロー（オーバル・ライトブレンド仕様） ===== */
+/* ===== 1. ヒーロー（キャッチコピー上下均等版） ===== */
 .hero {
-  min-height: 45vh;           /* 画面の縦幅に対して心地よい高さを確保 */
+  min-height: 45vh;           
   display: flex;
-  align-items: center;        /* 上下中央揃え */
-  justify-content: center;    /* 左右中央揃え */
-  padding: 100px 24px 60px;   /* 上にヘッダー分の余白(100px)をとりつつ、上下の見た目のバランスを均等に */
+  align-items: center;        
+  justify-content: center;    
+  padding: 100px 24px 60px;   /* 先ほど調整した、目視で上下均等になる黄金比 */
   background-color: #ffffff;
   background-image:
     radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 40%, transparent 80%),
@@ -411,10 +423,11 @@ footer {
     padding: 50px 20px;
   }
 
-   .hero {
-    min-height: 240px;          /* スマホである程度しっかり高さを出す */
+  /* スマホ版キャッチコピーの上下均等設定 */
+  .hero {
+    min-height: 240px;          
     height: auto;
-    padding: 90px 20px 40px;    /* 上のヘッダー分を考慮して、上下の目視バランスを均等化 */
+    padding: 90px 20px 40px;    
     background-image:
       radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 35%, transparent 75%),
       radial-gradient(at 0% 20%, rgba(120, 165, 133, 0.35) 0px, transparent 65%),
@@ -422,7 +435,6 @@ footer {
       radial-gradient(at 100% 90%, rgba(39, 76, 119, 0.3) 0px, transparent 65%),
       radial-gradient(at 0% 90%, rgba(96, 150, 186, 0.25) 0px, transparent 65%);
   }
-
 
   .hero h1 {
     font-size: 19px;
