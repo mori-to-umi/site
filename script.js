@@ -45,16 +45,45 @@ window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
 
-// ===== PC版：画像スライダーの上でマウスホイールを回したら横スクロールさせる機能 =====
+// ===== PC版：画像スライダーの上でホイールを回したら1枚ずつピタッと切り替える機能 =====
 const sliders = document.querySelectorAll('.js-slider');
 
 sliders.forEach((slider) => {
-  slider.addEventListener('wheel', (e) => {
-    // タッチパッドなどの誤作動を防ぐため、PCの通常スクロール（縦スクロールの動き）を横スクロールに変換
-    if (e.deltaY !== 0) {
-      e.preventDefault(); // 通常のブラウザの縦スクロールを止める
-      slider.scrollLeft += e.deltaY; // ホイールの回転量（上下）の分だけ、左右にスクロールさせる
-    }
-  }, { passive: false }); // preventDefaultを効かせるためのお守り
-});
+  let isScrolling = false; // 連続で回りすぎて超高速連打になるのを防ぐフラグ
 
+  slider.addEventListener('wheel', (e) => {
+    e.preventDefault(); // 通常の縦スクロールを止める
+
+    // すでにアニメーション中の場合は、一瞬だけ入力を無視（操作感を安定させるため）
+    if (isScrolling) return;
+
+    // スライダー内の1枚あたりの横幅（画像＋隙間の合計値）を取得
+    const slideItem = slider.querySelector('.slide-item');
+    if (!slideItem) return;
+    
+    // 1回分の移動量を計算（画像の幅 ＋ 隣との隙間12px）
+    const moveAmount = slideItem.offsetWidth + 12; 
+
+    isScrolling = true;
+
+    if (e.deltaY > 0) {
+      // 下ホイール（右へ1枚進む）
+      slider.scrollBy({
+        left: moveAmount,
+        behavior: 'smooth'
+      });
+    } else {
+      // 上ホイール（左へ1枚戻る）
+      slider.scrollBy({
+        left: -moveAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    // クルクルしすぎ防止：0.4秒後に次のスクロールを受け付ける
+    setTimeout(() => {
+      isScrolling = false;
+    }, 400);
+
+  }, { passive: false });
+});
