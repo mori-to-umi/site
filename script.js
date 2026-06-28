@@ -45,24 +45,27 @@ window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
 
-// ===== PC版：画像スライダーの上でホイールを回したら1枚ずつピタッと切り替える機能 =====
+// ===== PC版：画像スライダーの上でホイールを回したら1枚ずつピタッと切り替える機能（完全版） =====
 const sliders = document.querySelectorAll('.js-slider');
 
 sliders.forEach((slider) => {
-  let isScrolling = false; // 連続で回りすぎて超高速連打になるのを防ぐフラグ
+  let isScrolling = false;
 
   slider.addEventListener('wheel', (e) => {
     e.preventDefault(); // 通常の縦スクロールを止める
 
-    // すでにアニメーション中の場合は、一瞬だけ入力を無視（操作感を安定させるため）
     if (isScrolling) return;
 
-    // スライダー内の1枚あたりの横幅（画像＋隙間の合計値）を取得
-    const slideItem = slider.querySelector('.slide-item');
+    // 💡 修正ポイント：中に最初にある子要素（カード）を自動で取得する
+    const slideItem = slider.firstElementChild ? slider.firstElementChild.children[0] : null;
     if (!slideItem) return;
     
-    // 1回分の移動量を計算（画像の幅 ＋ 隣との隙間12px）
-    const moveAmount = slideItem.offsetWidth + 12; 
+    // スライダーの隙間（gap）の数値をCSSから自動で取得する（なければ12pxをデフォルトにする）
+    const style = window.getComputedStyle(slider);
+    const gap = parseInt(style.gap) || 12;
+
+    // 1回分の正確な移動量を計算（カードの横幅 ＋ 隙間）
+    const moveAmount = slideItem.offsetWidth + gap; 
 
     isScrolling = true;
 
@@ -80,7 +83,7 @@ sliders.forEach((slider) => {
       });
     }
 
-    // クルクルしすぎ防止：0.4秒後に次のスクロールを受け付ける
+    // 連打防止（0.4秒後に次のスクロールを解禁）
     setTimeout(() => {
       isScrolling = false;
     }, 400);
