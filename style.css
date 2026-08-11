@@ -553,11 +553,43 @@ html {
     max-height: 480px !important;
 }
 
-/* ヘッダーロゴの調整（JPG用） */
-.logo img {
-  height: 40px;             /* ロゴの高さ（お好みで調整してください） */
-  width: auto;              /* 横幅は自動調整 */
-  display: block;
-  mix-blend-mode: multiply;  /* 白い背景を透けさせてヘッダーになじませます */
+/* ===== ヘッダー本体 ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 76px;               
+  background-color: #FFFFFF;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 15px rgba(26, 60, 64, 0.06);
+  z-index: 3000;
 }
 
+/* ===== ロゴエリア（横並び設定） ===== */
+.logo a {
+  display: flex;
+  align-items: center;       /* 上下中央揃え */
+  gap: 12px;                 /* 画像と文字の間隔 */
+  text-decoration: none;
+}
+
+/* ロゴ画像（サイズアップ！） */
+.logo img {
+  height: 48px;              /* 36px → 48px に拡大！ */
+  width: auto;
+  display: block;
+}
+
+/* ロゴ横のテキスト */
+.logo span {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;           
+  font-weight: 700;
+  color: var(--color-main);  /* 深緑 */
+  letter-spacing: 0.08em;
+  white-space: nowrap;       
+}
