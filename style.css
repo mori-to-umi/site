@@ -7,7 +7,7 @@
   --color-text: #2C3E35;      /* 読みやすい濃い緑黒 */
   --color-card-bg: #FFFFFF;
   
-  /* ⭕ 【大元の色設定】事業内容の背景色（薄いグリーン/ブルーグレー） */
+  /* 【大元の色設定】事業内容の背景色（薄いグリーン/ブルーグレー） */
   --bg-service: #F4F7F6;      
 }
 
@@ -516,7 +516,7 @@ html {
 }
 
 /* ==================================================
-   📝 成長記録 スタイル設定（公式埋め込み・いいね消去版）
+   📝 成長記録 スタイル設定
    ================================================== */
 
 .diary-intro {
@@ -525,7 +525,7 @@ html {
     margin-bottom: 25px;
 }
 
-/* PCでは横に並び、スマホでは自動で縦1個になるベース */
+
 .instagram-official-area {
     display: flex;
     flex-wrap: wrap;
@@ -535,21 +535,29 @@ html {
     width: 100%;
 }
 
-/* 💡 インスタ公式の枠そのものを包む設定 */
+
 .instagram-official-area .instagram-media {
     flex: 0 1 320px !important;
     min-width: 326px !important;
     margin: 0 !important;
     
-    /* 👇 高さを制限して、下部にあるいいね欄を枠外に追い出して隠す */
+
     max-height: 480px !important; 
     overflow: hidden !important;
     border: 1px solid #dbdbdb !important;
     border-radius: 8px !important;
 }
 
-/* 生成される実際のインラインフレームにも高さを強制固定 */
+
 .instagram-official-area iframe {
     max-height: 480px !important;
+}
+
+/* ヘッダーロゴの調整（JPG用） */
+.logo img {
+  height: 40px;             /* ロゴの高さ（お好みで調整してください） */
+  width: auto;              /* 横幅は自動調整 */
+  display: block;
+  mix-blend-mode: multiply;  /* 白い背景を透けさせてヘッダーになじませます */
 }
 
