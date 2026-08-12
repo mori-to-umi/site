@@ -595,20 +595,19 @@ header {
 }
 
 
-/* ===== ヒーロー背景の上書き設定 ===== */
+/* ===== ヒーロー背景 ===== */
 .hero {
-  min-height: 52vh !important;
+  min-height: 38vh !important; /* 52vh → 38vh に縮小 */
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 100px 24px 60px !important;
-  
-  /* 左上の緑〜砂浜ベージュ〜右下の海青へのグラデーション */
+  padding: 85px 24px 40px !important; /* 上下の余白も詰めてスッキリ */
   background: 
     radial-gradient(circle at 10% 20%, rgba(120, 165, 133, 0.5) 0%, transparent 60%),
     radial-gradient(circle at 90% 80%, rgba(130, 190, 210, 0.6) 0%, transparent 55%),
     linear-gradient(135deg, #F4F7F4 0%, #EFEBE4 50%, #E3F0F5 100%) !important;
 }
+
 
 .hero h1 {
   font-family: 'Noto Serif JP', serif !important;
