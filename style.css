@@ -653,16 +653,43 @@ h2::after {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(26, 60, 64, 0.08);
 }
-/* パターン1：ナチュラル */
+/* ===== ヒーローセクション（CSSグラデーションで表現） ===== */
 .hero {
-  /* 背景を白から優しいグリーンベージュのグラデーションへ */
-  background: linear-gradient(180deg, #FFFFFF 0%, #EFEFE8 100%);
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 60px;
+  position: relative;
+  overflow: hidden;
+  
+  /* 左上に緑、右下に砂浜と青を配したトリプルグラデーション */
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(180, 210, 190, 0.45) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(165, 215, 230, 0.5) 0%, transparent 40%),
+    linear-gradient(135deg, #f7f8f5 0%, #f3eee6 60%, #e0f0f5 100%);
 }
 
-.section-tag {
-  color: #3B6056; /* オレンジから上品なディープグリーンへ */
+.hero h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #1A3C40;
+  line-height: 1.8;
+  text-align: center;
+  text-shadow: none;
+  z-index: 1;
 }
 
-.news-link {
-  border-bottom: 1px solid #3B6056;
+/* 中央の波線アクセント */
+.hero::after {
+  content: "〜〜〜";
+  display: block;
+  font-size: 18px;
+  color: rgba(26, 60, 64, 0.25);
+  letter-spacing: -2px;
+  margin-top: 24px;
+  z-index: 1;
 }
