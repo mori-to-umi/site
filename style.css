@@ -610,49 +610,7 @@ section h2::after {
   background-color: var(--color-main);
 }
 
-/* ===== デザイン微調整（洗練化） ===== */
 
-/* 1. 見出し（h2）の重複表示を解消し、上品なデザインに整える */
-h2 {
-  padding-left: 0;           /* 左の太線を解除 */
-  padding-bottom: 10px;      /* 下線との余白 */
-  border-bottom: 2px solid var(--color-main); /* シンプルで美しい下線 */
-  display: inline-block;     /* 下線の長さを文字幅に合わせる */
-}
-
-h2::before,
-h2::after {
-  display: none;            /* 重複していた疑似要素を非表示 */
-}
-
-/* 2. カード（事業内容）に控えめな影と枠線を追加 */
-.card {
-  border: 1px solid rgba(26, 60, 64, 0.08);
-  border-top: 4px solid var(--color-main); /* 既存の深緑ラインを保持 */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(26, 60, 64, 0.08);
-}
-
-/* 3. NEWS枠の見た目を整える */
-.news-list {
-  border: 1px solid rgba(26, 60, 64, 0.08);
-  box-shadow: 0 4px 20px rgba(26, 60, 64, 0.03);
-}
-
-/* 4. お問い合わせボタンの質感を高める */
-.contact-button {
-  border: 1px solid rgba(26, 60, 64, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(26, 60, 64, 0.08);
-}
 /* ===== ヒーロー背景の上書き設定 ===== */
 .hero {
   min-height: 52vh !important;
