@@ -597,16 +597,17 @@ header {
 
 /* ===== ヒーロー背景 ===== */
 .hero {
-  min-height: 38vh !important; /* 52vh → 38vh に縮小 */
+  min-height: 38vh !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 85px 24px 40px !important; /* 上下の余白も詰めてスッキリ */
+  padding: 110px 24px 50px !important; /* 上の余白を85px→110pxに広げて文字を下へ下げる */
   background: 
     radial-gradient(circle at 10% 20%, rgba(120, 165, 133, 0.5) 0%, transparent 60%),
     radial-gradient(circle at 90% 80%, rgba(130, 190, 210, 0.6) 0%, transparent 55%),
     linear-gradient(135deg, #F4F7F4 0%, #EFEBE4 50%, #E3F0F5 100%) !important;
 }
+
 
 
 .hero h1 {
