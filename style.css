@@ -653,43 +653,28 @@ h2::after {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(26, 60, 64, 0.08);
 }
-/* ===== ヒーローセクション（CSSグラデーションで表現） ===== */
+/* ===== ヒーロー背景の上書き設定 ===== */
 .hero {
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 24px 60px;
-  position: relative;
-  overflow: hidden;
+  min-height: 52vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 100px 24px 60px !important;
   
-  /* 左上に緑、右下に砂浜と青を配したトリプルグラデーション */
+  /* 左上の緑〜砂浜ベージュ〜右下の海青へのグラデーション */
   background: 
-    radial-gradient(circle at 10% 20%, rgba(180, 210, 190, 0.45) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(165, 215, 230, 0.5) 0%, transparent 40%),
-    linear-gradient(135deg, #f7f8f5 0%, #f3eee6 60%, #e0f0f5 100%);
+    radial-gradient(circle at 10% 20%, rgba(120, 165, 133, 0.5) 0%, transparent 60%),
+    radial-gradient(circle at 90% 80%, rgba(130, 190, 210, 0.6) 0%, transparent 55%),
+    linear-gradient(135deg, #F4F7F4 0%, #EFEBE4 50%, #E3F0F5 100%) !important;
 }
 
 .hero h1 {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #1A3C40;
-  line-height: 1.8;
-  text-align: center;
-  text-shadow: none;
-  z-index: 1;
-}
-
-/* 中央の波線アクセント */
-.hero::after {
-  content: "〜〜〜";
-  display: block;
-  font-size: 18px;
-  color: rgba(26, 60, 64, 0.25);
-  letter-spacing: -2px;
-  margin-top: 24px;
-  z-index: 1;
+  font-family: 'Noto Serif JP', serif !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  color: #1A3C40 !important;
+  line-height: 1.8 !important;
+  text-align: center !important;
+  text-shadow: none !important;
 }
