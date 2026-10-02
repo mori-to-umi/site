@@ -620,3 +620,11 @@ header {
   text-align: center !important;
   text-shadow: none !important;
 }
+.news-image img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
