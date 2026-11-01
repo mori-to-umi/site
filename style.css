@@ -387,7 +387,7 @@ section {
 /* ===== フッター ===== */
 footer {
   background: var(--color-sub);
-  padding: 30px 24px;
+  padding: 40px 24px;
   text-align: center;
   color: rgba(250, 249, 246, 0.6);
 }
